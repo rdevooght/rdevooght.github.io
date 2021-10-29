@@ -1,0 +1,164 @@
+
+body{
+  background-color: #f9fffe;
+}
+
+svg {
+  background: linear-gradient(180deg, rgba(249,255,254,1) 0%, rgba(249,255,254,0.95) 70%, rgba(249,255,254,0) 80%, rgba(249,255,254,0) 100%);
+}
+
+.container {
+  width: 100%;
+}
+
+#small_screen_warning {
+  position: relative;
+  z-index: 200;
+  background-color: rgb(255, 60, 0);
+  font-size: large;
+  color: #000000;
+  padding: 2em;
+}
+
+#sections {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  top: 0px;
+  visibility: hidden;
+}
+
+.step {
+  position: relative;
+  z-index: 100;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 960px) {
+  .step {
+    z-index: 100;
+  }
+
+  .step.left {
+    width: 30%;
+    margin-left: 3%;
+  }
+}
+@media screen and (max-width: 959px) {
+  .step {
+    z-index: -100;
+  }
+
+  .step.container {
+    z-index: 100;
+  }
+
+  .step.left {
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+}
+
+
+.step_text {
+  /* position: absolute; */
+  width: 100%;
+  /* top: 0px; */
+  color: #000000;
+  font-size: 24px;
+  font-family: -apple-system, BlinkMacSystemFont,
+               'avenir next', avenir,
+               'helvetica neue', helvetica,
+               ubuntu,
+               roboto, noto,
+               'segoe ui', arial,
+               sans-serif;
+}
+
+.step_text p {
+  width: max-content;
+  max-width: 100%;
+
+  background-color: #f9fffee1;
+  padding: 5px;
+  border-bottom: 2px solid #c966cc; 
+  border-right: 2px solid #7dcc66; 
+}
+
+.step .legend {
+  position: fixed;
+  bottom: 2em;
+  left: 33%;
+  width: 67%;
+  text-align: center;
+}
+
+.step.container .legend {
+  position: fixed;
+  bottom: 2em;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.legend .footnote {
+  color: rgb(63, 63, 63);
+  font-size: small;
+}
+
+/* .step_text p.short_text span, .step_text p.long_text {
+  
+} */
+
+#sections .title {
+  font-weight: bold;
+  margin-bottom: 2px;
+  color: #262626;
+  line-height: 1.2em;
+}
+
+#vis {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+#vis svg {
+  width: 100%;
+  height: 100%;
+}
+
+#historical_chart {
+  width: 100%;
+  height: 100%;
+}
+
+.centered {
+  text-align: center;
+}
+
+.femme, .homme {
+  color: whitesmoke;
+  border-radius: 3px;
+  padding: 0 2px;
+}
+
+.femme {
+  background-color: #813bb0;
+}
+
+.homme {
+  background-color: #cda318;
+}
+
+.colophon {
+  max-width: 760px;
+  margin: auto;
+  margin-top: 150px;
+  text-align: left;
+  font-size: medium;
+  color: rgb(63, 63, 63);
+}
