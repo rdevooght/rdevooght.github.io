@@ -30,12 +30,12 @@ svg {
 
 .step {
   position: relative;
-  z-index: 100;
   overflow: hidden;
 }
 
-@media screen and (min-width: 960px) {
-  .step {
+@media screen and (min-width: 960px), screen and (orientation: landscape){
+  .step_text {
+    position: relative;
     z-index: 100;
   }
 
@@ -43,19 +43,39 @@ svg {
     width: 30%;
     margin-left: 3%;
   }
+
+  .step .legend {
+    position: fixed;
+    bottom: 2em;
+    left: 33%;
+    width: 67%;
+    text-align: center;
+  }
 }
-@media screen and (max-width: 959px) {
-  .step {
+@media screen and (max-width: 959px), screen and (orientation: portrait) {
+  .step_text {
+    position: relative;
     z-index: -100;
   }
 
-  .step.container {
+  .step.container .step_text {
+    position: relative;
     z-index: 100;
   }
 
   .step.left {
     margin-left: 2em;
     margin-right: 2em;
+  }
+
+  .step .legend {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 2em;
+    z-index: 100;
   }
 }
 
@@ -81,17 +101,11 @@ svg {
 
   background-color: #f9fffee1;
   padding: 5px;
-  border-bottom: 2px solid #c966cc; 
-  border-right: 2px solid #7dcc66; 
+  border-bottom: 3px solid #c966cc; 
+  border-right: 3px solid #7dcc66; 
 }
 
-.step .legend {
-  position: fixed;
-  bottom: 2em;
-  left: 33%;
-  width: 67%;
-  text-align: center;
-}
+
 
 .step.container .legend {
   position: fixed;
@@ -161,4 +175,11 @@ svg {
   text-align: left;
   font-size: medium;
   color: rgb(63, 63, 63);
+}
+
+h1 {
+  font-size: 4em;
+  padding: 5px;
+  background-color: #f9fffec9;
+  font-family: "Cambria", "Rockwell", "Ogg", serif;
 }
