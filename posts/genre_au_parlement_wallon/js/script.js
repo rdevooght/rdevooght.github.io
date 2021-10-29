@@ -72,9 +72,18 @@ d3.selectAll('.step_text p').each(function() {
   }
 })
 
+d3.selectAll('.step_text h1').each(function() {
+  var selection = d3.select(this);
+  var title_height = this.getBoundingClientRect().height;
+  var margin = (viewport_height - title_height) / 2;
+  
+  selection.style('margin-top', `${margin}px`);
+  selection.style('margin-bottom', `${margin}px`);
+})
+
 // Size of SVG element depends on screen size
 var std_limits = {min_x: 33, max_x: 100, min_y: 0, max_y: 100};
-if (viewport_width < 960) {
+if (viewport_width < viewport_height) {
   std_limits.min_x = 0
   std_limits.max_y = 80
 }
