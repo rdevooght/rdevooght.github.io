@@ -14,10 +14,30 @@ function raw_to_Array(object) {
 var yearly_data = raw_to_Array(raw_yearly_data);
 var yearly_data_no_pres = raw_to_Array(raw_yearly_data_no_pres);
 
+var parti_std_casing = {
+  'ps':'PS',
+  'mr':'MR',
+  'ptb':'PTB',
+  'ecolo':'ECOLO',
+  'cdh':'cdH',
+  'wallonie insoumise':'Wallonie Insoumise',
+  'dieranimal':'DierAnimal',
+  'collectif citoyen':'Collectif Citoyen',
+  'turquoise':'Turquoise',
+  'listes destexhe':'Listes Destexhe',
+  'défi':'DéFI',
+  'parti populaire':'Parti Populaire',
+  'nation':'Nation',
+  'agir':'Agir',
+  'demain':'Demain',
+  'pcb':'PCB',
+  'la droite':'La Droite',
+  'referendum':'Referendum'
+};
+
 
 /* Settings */
 var transition_duration = 1000;
-var min_radius = 1, default_radius = 5, max_radius = 100;
 var dichotomy_colors = {
   'F': '#813bb0',
   'M': '#cda318',
@@ -30,6 +50,14 @@ var viewport_width = document.documentElement.clientWidth;
 var viewport_height = document.documentElement.clientHeight;
 var w = viewport_width;
 var h = viewport_height;
+var scaling_factor = (w - 300)/2400 + 0.5;
+var min_radius = 1*scaling_factor, default_radius = 5*scaling_factor, max_radius = 100*scaling_factor;
+var small_font_size = 9, font_size = 10, big_font_size = 15;
+if (w > 768) {
+  small_font_size = 16;
+  font_size = 16;
+  big_font_size = 24;
+}
 
 d3.selectAll('.step').style('min-height', function() {
   var classes = this.className.split(' ');
@@ -89,9 +117,9 @@ if (viewport_width < viewport_height) {
 }
 
 // Show warning for small screens
-if (viewport_width > 960) {
-  d3.select('#small_screen_warning').remove();
-}
+// if (viewport_width > 960) {
+//   d3.select('#small_screen_warning').remove();
+// }
 
 // Create the svg element
 var svg = d3.select("#vis svg")
@@ -105,7 +133,7 @@ var annotations = svg.append('g').attr('id', 'annotations');
 
 var step = {
   current_progress: null,
-  progressive: true,
+  progressive: false,
   progress: function(progress) {},
   show: function() {},
   leave: function() {},
@@ -284,7 +312,7 @@ function step1_maker(full_pop) {
   full_pop = full_pop.map(d => Object.assign(d, {s1: {angle: Math.random()*Math.PI}}));
 
   var moving_bubbles = Object.create(step);
-  moving_bubbles.progressive = false;
+  
 
   function launch_random_movement() {
     moving_bubbles.ticker = d3.interval((e) => {
@@ -378,7 +406,17 @@ function determine_parties_positions(candidates, limits) {
   return parties_and_positions;
 }
 
+// Determine how far below the center of the party buble should the name be written
+function party_name_offset(d, i) {
+  var offset = y(d.y) + Math.sqrt(d.count)*default_radius + big_font_size + 2;
+  if (d.name.length > 10 && w < 758) {
+    offset += i%2*big_font_size;
+  }
+  return offset
+}
+
 var parties_and_positions = determine_parties_positions(full_pop.filter(c => c.status), std_limits);
+
 
 function candidates_step_maker(full_pop) {
 
@@ -398,7 +436,7 @@ function candidates_step_maker(full_pop) {
 
 
   var candidates_step = Object.create(step);
-  candidates_step.progressive = false;
+  
 
   candidates_step.show = function() {
     
@@ -419,13 +457,13 @@ function candidates_step_maker(full_pop) {
     var parties = [];
     for (p in parties_and_positions) {
       parties.push({
-        name: p, x: parties_and_positions[p].x, y: parties_and_positions[p].y,
+        name: parti_std_casing[p], x: parties_and_positions[p].x, y: parties_and_positions[p].y,
         count: data.filter(c => c.parti.toLowerCase() == p).length
       });
     }
 
-    draw_annotations(annotations, parties, d => d.name, 'black', d => x(d.x), d => y(d.y) + Math.sqrt(d.count)*default_radius + 25,
-    d => d.name, 'middle', 20, t);
+    draw_annotations(annotations, parties, d => d.name, 'black', d => x(d.x), party_name_offset,
+    d => d.name, 'middle', big_font_size, t);
   }
 
   return candidates_step;
@@ -440,7 +478,7 @@ function gendered_candidates_step_maker(full_pop) {
 
 
   var gendered_candidates_step = Object.create(step);
-  gendered_candidates_step.progressive = false;
+  
 
   gendered_candidates_step.show = function() {
     
@@ -461,12 +499,12 @@ function gendered_candidates_step_maker(full_pop) {
     var parties = [];
     for (p in parties_and_positions) {
       parties.push({
-        name: p, x: parties_and_positions[p].x, y: parties_and_positions[p].y,
+        name: parti_std_casing[p], x: parties_and_positions[p].x, y: parties_and_positions[p].y,
         count: data.filter(c => c.parti.toLowerCase() == p).length
       });
     }
-    draw_annotations(annotations, parties, d => d.name, 'black', d => x(d.x), d => y(d.y) + Math.sqrt(d.count)*default_radius + 25,
-    d => d.name, 'middle', 20, t);
+    draw_annotations(annotations, parties, d => d.name, 'black', d => x(d.x), party_name_offset,
+    d => d.name, 'middle', big_font_size, t);
     
   }
 
@@ -482,7 +520,7 @@ function election_results_step_maker(full_pop) {
 
 
   var election_results_step = Object.create(step);
-  election_results_step.progressive = false;
+  
 
   election_results_step.show = function() {
     
@@ -503,13 +541,13 @@ function election_results_step_maker(full_pop) {
     var parties = [];
     for (p in parties_and_positions) {
       parties.push({
-        name: p, x: parties_and_positions[p].x, y: parties_and_positions[p].y,
+        name: parti_std_casing[p], x: parties_and_positions[p].x, y: parties_and_positions[p].y,
         count: data.filter(c => c.parti.toLowerCase() == p).length
       });
     }
     var winning_parties = ['ps', 'mr', 'ecolo', 'ptb', 'cdh'];
-    draw_annotations(annotations, parties, d => d.name, 'black', d => x(d.x), d => y(d.y) + Math.sqrt(d.count)*default_radius + 25,
-    d => d.name, 'middle', 20, t, d => (winning_parties.includes(d.name))? 1 : default_faded_opacity);
+    draw_annotations(annotations, parties, d => d.name, 'black', d => x(d.x), party_name_offset,
+    d => d.name, 'middle', big_font_size, t, d => (winning_parties.includes(d.name))? 1 : default_faded_opacity);
   }
   return election_results_step;
 }
@@ -543,7 +581,7 @@ function election_results_list_step_maker(full_pop) {
 
 
   var election_results_step = Object.create(step);
-  election_results_step.progressive = false;
+  
 
   election_results_step.show = function() {
     
@@ -563,7 +601,7 @@ function election_results_list_step_maker(full_pop) {
     // annotations
     draw_annotations(annotations, data, d => d.id, 'black', 
       d => x(d.s_res_list.x)+10, d => y(d.s_res_list.y)+5,
-      d => `${d.first_name} ${d.last_name}`, 'left', 15, t);
+      d => (w < 758) ? `${get_initials(d.first_name)} ${d.last_name}` : `${d.first_name} ${d.last_name}`, 'left', small_font_size, t);
   }
 
   return election_results_step;
@@ -639,7 +677,7 @@ function hemicycle_step_maker(full_pop) {
   var data = pm.concat(ministers);
 
   var hemicycle_step = Object.create(step);
-  hemicycle_step.progressive = false;
+  
 
   hemicycle_step.show = function() {
 
@@ -682,7 +720,7 @@ function speakers_step_maker(full_pop) {
 
 
   var speakers_step = Object.create(step);
-  speakers_step.progressive = false;
+  
 
   speakers_step.show = function() {
 
@@ -718,7 +756,7 @@ function speakers_growing_bubbles_step_maker(full_pop) {
 
 
   var speakers_growing_bubbles_step = Object.create(step);
-  speakers_growing_bubbles_step.progressive = false;
+  
 
   speakers_growing_bubbles_step.show = function() {
 
@@ -738,7 +776,7 @@ function speakers_growing_bubbles_step_maker(full_pop) {
     var top5 = d3.sort(data, d => -d.nbr_of_words).slice(0,5);
     draw_annotations(annotations, top5, d => d.id, 'black', 
     d => x(d.s6.x), d => y(d.s6.y), d => `${get_initials(d.first_name)} ${d.last_name}`, 
-    'middle', 15, t);
+    'middle', font_size, t);
   }
 
   return speakers_growing_bubbles_step;
@@ -777,7 +815,7 @@ function biggest_speakers_step_maker(full_pop) {
   //console.log(d3.sum(data.map(x => x.nbr_of_words)));
 
   var biggest_speakers_step = Object.create(step);
-  biggest_speakers_step.progressive = false;
+  
 
   biggest_speakers_step.show = function() {
     svg.select('g.pie_chart').remove();
@@ -798,7 +836,7 @@ function biggest_speakers_step_maker(full_pop) {
     draw_annotations(
       annotations, data, d => d.id, 'black',
       d => x(d.s7.x + 10),  d => y(d.s7.y), d => `${d.first_name} ${d.last_name}, ${d.s7.role}`,
-      'left', 15, t
+      'left', font_size, t
     );
   }
 
@@ -811,7 +849,7 @@ function normal_pm_step_maker(full_pop) {
 
 
   var normal_pm_step = Object.create(step);
-  normal_pm_step.progressive = false;
+  
 
   normal_pm_step.show = function() {
 
@@ -869,7 +907,7 @@ function normal_pm_plot_step_maker(full_pop) {
       .attr('text-anchor', 'end')
       .attr('dy', -10)
       .attr('opacity', 1)
-      .attr('font-size', 10)
+      .attr('font-size', font_size)
       .attr('fill', 'black')
     );
   
@@ -881,15 +919,16 @@ function normal_pm_plot_step_maker(full_pop) {
       .append('text')
       .text('Nombre de mots par intervention')
       .attr('y', plot_window.y1)
-      .attr('text-anchor', 'middle')
+      .attr('text-anchor', (w > h) ? 'middle' : 'start')
+      .attr('dx', (w > h) ? 0 : -x(padding)+5)
       .attr('dy', -10)
       .attr('opacity', 1)
-      .attr('font-size', 10)
+      .attr('font-size', font_size)
       .attr('fill', 'black')
     );
 
   var normal_pm_plot_step = Object.create(step);
-  normal_pm_plot_step.progressive = false;
+  
 
   normal_pm_plot_step.show = function() {
     svg.select('g.pie_chart').remove();
@@ -955,7 +994,7 @@ function avg_pm_plot_step_maker(full_pop) {
       .attr('text-anchor', 'end')
       .attr('dy', -10)
       .attr('opacity', 1)
-      .attr('font-size', 10)
+      .attr('font-size', font_size)
       .attr('fill', 'black')
     );
   
@@ -967,10 +1006,11 @@ function avg_pm_plot_step_maker(full_pop) {
       .append('text')
       .text('Nombre de mots par intervention')
       .attr('y', plot_window.y1)
-      .attr('text-anchor', 'middle')
+      .attr('text-anchor', (w > h) ? 'middle' : 'start')
+      .attr('dx', (w > h) ? 0 : -x(padding)+5)
       .attr('dy', -10)
       .attr('opacity', 1)
-      .attr('font-size', 10)
+      .attr('font-size', font_size)
       .attr('fill', 'black')
     );
 
@@ -1006,7 +1046,7 @@ function avg_pm_plot_step_maker(full_pop) {
   
 
   var avg_pm_plot_step = Object.create(step);
-  avg_pm_plot_step.progressive = false;
+  
 
   avg_pm_plot_step.show = function() {
     svg.select('g.pie_chart').remove();
@@ -1049,14 +1089,14 @@ function avg_pm_plot_step_maker(full_pop) {
       labels.append('text')
         .attr('x', F.x - line_length).attr('y', F.y)
         .attr('text-anchor', 'end')
-        .attr('font-size', 15)
+        .attr('font-size', font_size)
         .attr('dy', 5)
         .text(`${Math.round(average_by_sex('F').avg_length)} mots`)
       
       labels.append('text')
         .attr('x', F.x).attr('y', F.y + line_length)
         .attr('text-anchor', 'start')
-        .attr('font-size', 15)
+        .attr('font-size', font_size)
         .attr('dy', 15)
         .attr('dx', -5)
         .text(`${Math.round(average_by_sex('F').nbr_interventions)} interventions`)
@@ -1064,14 +1104,14 @@ function avg_pm_plot_step_maker(full_pop) {
       labels.append('text')
         .attr('x', M.x + line_length).attr('y', M.y)
         .attr('text-anchor', 'start')
-        .attr('font-size', 15)
+        .attr('font-size', font_size)
         .attr('dy', 5)
         .text(`${Math.round(average_by_sex('M').avg_length)} mots`)
 
       labels.append('text')
         .attr('x', M.x).attr('y', M.y - line_length)
         .attr('text-anchor', 'start')
-        .attr('font-size', 15)
+        .attr('font-size', font_size)
         .attr('dy', -5)
         .attr('dx', -5)
         .text(`${Math.round(average_by_sex('M').nbr_interventions)} interventions`)
@@ -1139,7 +1179,7 @@ function speaking_time_step_maker(full_pop) {
       desc: '', x: limits.min_x + 2*thirds, y: (limits.min_y + limits.max_y)/2, perc: raw_yearly_data[2020].M / total_words * 100
     },
     {
-      legal_sex: 'F', words: raw_yearly_data[2020].F, id: `F-${2020}`,
+      legal_sex: 'F', words: raw_yearly_data[2020].F, id: 'F-2020',
       desc: '', x: limits.min_x + thirds, y: (limits.min_y + limits.max_y)/2, perc: raw_yearly_data[2020].F / total_words * 100
     },
   ];
@@ -1147,7 +1187,7 @@ function speaking_time_step_maker(full_pop) {
 
 
   var speaking_time_step = Object.create(step);
-  speaking_time_step.progressive = false;
+  
 
   speaking_time_step.show = function() {
 
@@ -1164,7 +1204,7 @@ function speaking_time_step_maker(full_pop) {
     );
 
     draw_annotations(annotations, data, d => d.id, 'black', d => x(d.x), d => y(d.y),
-    d => `${d.perc.toPrecision(3)}%`, 'middle', 15, t);
+    d => `${d.perc.toPrecision(3)}%`, 'middle', big_font_size, t);
   }
 
   return speaking_time_step;
@@ -1212,7 +1252,7 @@ function speaking_time_evolution_step_maker(full_pop) {
   var data_2020 = yearly_data.filter(d => d.year == 2020)[0];
 
   var speaking_time_evolution_step = Object.create(step);
-  speaking_time_evolution_step.progressive = false;
+  
 
   speaking_time_evolution_step.show = function() {
 
@@ -1234,7 +1274,7 @@ function speaking_time_evolution_step_maker(full_pop) {
     draw_annotations(
       annotations, data, d => `F-${d.year}`, dichotomy_colors['F'],
       d => time_chart.year_scale(d.year), d => time_chart.speaking_ratio_scale(d.ratio) - 10,
-      d => `${d.ratio.toPrecision(3)}%`, 'middle', 10, t
+      d => `${d.ratio.toPrecision(3)}%`, 'middle', font_size, t
     )
 
     
@@ -1257,7 +1297,7 @@ function speaking_time_regression_step_maker(full_pop) {
   var data_2020 = yearly_data.filter(d => d.year == 2020)[0];
 
   var speaking_time_regression_step = Object.create(step);
-  speaking_time_regression_step.progressive = false;
+  
 
   speaking_time_regression_step.show = function() {
 
@@ -1278,7 +1318,7 @@ function speaking_time_regression_step_maker(full_pop) {
     draw_annotations(
       annotations, data, d => `F-${d.year}`, dichotomy_colors['F'],
       d => time_chart.year_scale(d.year), d => time_chart.speaking_ratio_scale(d.ratio) - 10,
-      d => `${d.ratio.toPrecision(3)}%`, 'middle', 10, t
+      d => `${d.ratio.toPrecision(3)}%`, 'middle', font_size, t
     )
      
 
@@ -1317,7 +1357,7 @@ function speaking_time_projection_step_maker(full_pop) {
   data.push({year: year_for_5050, ratio: 50, color: '#66c9cc'});
 
   var speaking_time_evolution_step = Object.create(step);
-  speaking_time_evolution_step.progressive = false;
+  
 
   speaking_time_evolution_step.show = function() {
 
@@ -1339,7 +1379,7 @@ function speaking_time_projection_step_maker(full_pop) {
     draw_annotations(
       annotations, data, d => `F-${d.year}`,  d => (d.color !== undefined) ? d.color : dichotomy_colors['F'],
       d => time_chart.extended_year_scale(d.year), d => time_chart.speaking_ratio_scale(d.ratio) - 10,
-      d => `${d.ratio.toPrecision(3)}%`, 'middle', 10, t
+      d => `${d.ratio.toPrecision(3)}%`, 'middle', font_size, t
     )
     
       
@@ -1372,7 +1412,7 @@ function speaking_time_projection_step_maker(full_pop) {
 function empty_step_maker() {
   
   var empty_step = Object.create(step);
-  empty_step.progressive = false;
+  
 
   empty_step.show = function() {
 

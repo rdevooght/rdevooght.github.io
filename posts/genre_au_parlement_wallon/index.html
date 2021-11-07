@@ -5,28 +5,31 @@
   <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous"> -->
   <link rel="stylesheet" type="text/css" href="css/reset.css"/>
   <link rel="stylesheet" type="text/css" href="css/style.css"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
 <div>
   <div id='sections'>
-    <div id="small_screen_warning">
+    <!-- <div id="small_screen_warning">
       <p>
         Votre écran est trop petit pour afficher correctement cet article.<br>
         Certaines partie risques d'être difficilement lisibles
       </p>
       <p>Si vous en avez l'occasion, lisez-le sur un ordinateur</p>
-    </div>
+    </div> -->
     <section class="step container">
       <div class="step_text">
         <h1>Genre et temps de parole au parlement wallon</h1>
         <p class="mb20">La Wallonie compte plus de 3,6 millions d'habitant·es, chacun·e ayant son histoire, ses opinions, son identité.</p>
         <p class="mb20">Pour les représenter, 75 député&middot;es sont élu&middot;es pour s'exprimer et débattre au sein du parlement wallon.</p>
-        <p class="mb60">Mais qui s'exprime réellement au parlement ?</p>
+        <p class="mb50">Mais qui s'exprime réellement au parlement ?</p>
       </div>
     </section>
     <section class="step left">
       <div class="step_text">
-        <p class="mb30">Pour arriver au parlement, il faut d'abord être sur une liste électorale.</p>
+        <p class="mb30 mt10">Pour arriver au parlement, il faut d'abord être sur une liste électorale.</p>
         <p>En 2019, 18 partis ont présenté 757 candidat&middot;es effectif&middot;ves et 789 suppléant&middot;es.</p>
       </div>
       <div class="legend">
@@ -84,7 +87,7 @@
     <section class="step left">
       <div class="step_text">
         <p class="mb40">Là aussi, la répartition se fait en faveur des hommes, qui occupent 82% du temps de parole, alors qu'ils occupent 63% des sièges.</p>
-        <p>Plusieurs facteurs se combinent pour créer cette inégalité.</p>
+        <p>Plusieurs mécanismes se cachent derrière cette inégalité.</p>
       </div>
       <div class="legend">
         <p>La taille des bulles est proportionnelle aux nombre de mots prononcés au parlement wallon en 2020.</p>
@@ -96,7 +99,7 @@
           Les 10 personnes parlant le plus représentent à elles seules 62% du temps de parole total.</p>
         <p>On ne retrouve dans ce top 10 que des personnes ayant un rôle particulier: <em>président du parlement</em>, <em>président de groupe</em> ou <em>ministre</em>.</p>
         <p>Or, le président du parlement et tous les présidents de groupe sont des hommes, tout comme la plupart des ministres.</p>
-        <p class="mb30">C'est cette répartition des rôles qui est la raison principale pour l'inégalité de temps de parole au parlement.</p>
+        <p class="mb30">Cette répartition inégale des rôles est l'un des principaux mécanismes menant aux inégalités de temps de parole.</p>
       </div>
       <div class="legend">
         <p>
@@ -158,7 +161,7 @@
       </div>
       <div class="legend">
         <p>Temps de parole des femmes (député&middot;es et ministres) au parlement wallon entre 2015 et 2021*</p>
-        <p>*le temps de parole de 2021 est calculé sur la période de janvier à juillet.</p>
+        <p class="footnote">*le temps de parole de 2021 est calculé sur la période de janvier à juillet.</p>
       </div>
     </section>
     <section class="step left">
@@ -175,14 +178,40 @@
         <img src='img/journal.png' style="max-width: 90%;">
       </div>
       <div class="colophon">
-        <p>Recherche, écriture et graphiques: Robin Devooght</p>
-        <p>Pour réaliser cet article, une base de donnée de toutes les interventions au parlement wallon de 2015 à 2021 a été créée.
-          Si vous êtes intéressé&middot;e par ces données, ou par des données similaires au niveau du parlement fédéral (la chambre des représentants), 
-          n'hésitez pas à me contacter: robin.devooght[at]posteo.net
+        <h2>A propos</h2>
+        <p>Recherche, écriture et graphiques par Robin Devooght</p>
+        <p>
+          La conception de cet article a commencé par la création d’une base de données de toutes les interventions au parlement wallon de 2015 à 2021, 
+          sur base des comptes rendus mis à disposition par <a href="https://www.parlement-wallonie.be/opendata/">le parlement</a>. 
+          Cette base de données a permis de compter, pour chaque intevenant&middot;e, 
+          le nombre de mots prononcés pendant les séances plénières du parlement wallon, 
+          puis de voir comment ces prises de paroles se répartissaient entre hommes et femmes. 
+          J’ai utilisé par facilité l’expression “temps de parole”, 
+          mais pour être exact il faudrait donc parler de nombre de mots prononcés et non de durée d’interventions.</p>
+        <p>
+          Les inégalités liées au genre, aussi extrêmes soient-elles, 
+          ne sont qu’un des facteurs qui se combinent pour créer les inégalités de représentations dans nos parlements et nos gouvernements. 
+          Il serait intéressant d’étudier ces données de manières plus détaillées, 
+          en tenant compte d’autres indicateurs comme l'âge, le milieu socio-économique, l’origine, etc.
         </p>
-        <p>Il serait par exemple intéressant d'étudier d'autres indicateurs démographiques (age, formation, origine, niveau de vie, etc.), 
-          car de nombreux facteurs autres que le genre interviennent et se combinent pour composer les inégalités actuelles.</p>
-        <p>Mise en ligne le </p>
+        <p>
+          Si vous êtes intéressé·e par ces données, ou par des données similaires au niveau du parlement fédéral (la chambre des représentants), 
+          n'hésitez pas à me contacter: rdev[at]posteo.net
+        </p>
+        <p>
+          Les graphiques et animations sont réalisés à l’aide de la librairie <a href="https://d3js.org/">D3.js</a>.
+        </p>
+        <div class="social_media">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+            <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+          </svg>
+        </div>
       </div>
     </section>
   </div>

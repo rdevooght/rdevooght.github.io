@@ -1,3 +1,13 @@
+html {
+  font-size: 10px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
 
 body{
   background-color: #f9fffe;
@@ -14,16 +24,17 @@ p {
   width: 100%;
   max-width: 1140px;
   margin: auto;
+  padding: 2em;
 }
 
-#small_screen_warning {
+/* #small_screen_warning {
   position: relative;
   z-index: 200;
   background-color: rgb(255, 60, 0);
-  font-size: large;
+  font-size: 2.25rem;
   color: #000000;
   padding: 2em;
-}
+} */
 
 #sections {
   position: relative;
@@ -42,7 +53,7 @@ p {
   position: relative;
   width: 100%;
   color: #000000;
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 @media screen and (orientation: landscape){
@@ -61,6 +72,8 @@ p {
     left: 33%;
     width: 67%;
     text-align: center;
+    padding-left: 1em;
+    padding-right: 1em;
   }
 }
 @media screen and (orientation: portrait) {
@@ -108,12 +121,15 @@ p {
   left: 0;
   width: 100%;
   text-align: center;
-  font-size: 20px;
 }
 
-.legend .footnote {
+.step .legend p {
+  font-size: 1.25rem;
+}
+
+.step .legend p.footnote {
   color: rgb(63, 63, 63);
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 
@@ -165,13 +181,18 @@ p {
   margin: auto;
   margin-top: 150px;
   text-align: left;
-  font-size: 20px;
+  font-size: 1.25rem;
   color: rgb(63, 63, 63);
 }
 
 h1 {
-  font-size: 96px;
+  font-size: 6rem;
   padding: 5px;
   background-color: #f9fffec9;
   /* font-family: "Cambria", "Rockwell", "Ogg", serif; */
+}
+
+h2 {
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
 }
