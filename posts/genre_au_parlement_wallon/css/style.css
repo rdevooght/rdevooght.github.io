@@ -54,12 +54,11 @@ p {
   width: 100%;
   color: #000000;
   font-size: 1.5rem;
+  z-index: 100;
 }
 
 @media screen and (orientation: landscape){
-  .step_text {
-    z-index: 100;
-  }
+
 
   .step.left {
     width: 30%;
@@ -75,14 +74,15 @@ p {
     padding-left: 1em;
     padding-right: 1em;
   }
+
+  .step.container .legend {
+    left: 0;
+    width: 100%;
+  }
 }
 @media screen and (orientation: portrait) {
-  .step_text {
+  .step.back .step_text {
     z-index: -100;
-  }
-
-  .step.container .step_text {
-    z-index: 100;
   }
 
   .step.left {
@@ -97,7 +97,8 @@ p {
     width: 100%;
     text-align: center;
     padding: 2em;
-    z-index: 100;
+    z-index: 200;
+    background-color: #f9fffe;
   }
 }
 
@@ -113,15 +114,6 @@ p {
   border-right: 3px solid #7dcc66; 
 }
 
-
-
-.step.container .legend {
-  position: fixed;
-  bottom: 2em;
-  left: 0;
-  width: 100%;
-  text-align: center;
-}
 
 .step .legend p {
   font-size: 1.25rem;
