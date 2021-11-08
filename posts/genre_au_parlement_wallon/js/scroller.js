@@ -1,3 +1,6 @@
+// Original by Jim Vallandingham
+// https://github.com/vlandham/scroll_demo/blob/gh-pages/js/scroller.js
+
 
 /**
  * scroller - handles the details

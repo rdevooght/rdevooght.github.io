@@ -304,6 +304,14 @@ function draw_annotations(parent, data, id_func, color, x, y, text, anchor, font
   );
 }
 
+function draw_background(limit, transition) {
+  if (limit < 10) {
+    limit = 10;
+  }
+  svg//.transition(transition)
+    .style('background', `linear-gradient(180deg, rgba(249,255,254,1) 0%, rgba(249,255,254,0.95) ${limit-5}%, rgba(249,255,254,0) ${limit+5}%, rgba(249,255,254,0) 100%)`);
+}
+
 function step1_maker(full_pop) {
   var speed = 0.02;
   var angle_speed_change = 0.5;
@@ -335,6 +343,9 @@ function step1_maker(full_pop) {
     
     // annotations
     draw_annotations(annotations, []);
+
+    // background
+    draw_background(0, t);
       
     t.end().then(function() {launch_random_movement()}, function() {console.log('s1 transition failed')});
   }
@@ -464,6 +475,9 @@ function candidates_step_maker(full_pop) {
 
     draw_annotations(annotations, parties, d => d.name, 'black', d => x(d.x), party_name_offset,
     d => d.name, 'middle', big_font_size, t);
+
+    // background
+    draw_background(75, t);
   }
 
   return candidates_step;
@@ -505,6 +519,9 @@ function gendered_candidates_step_maker(full_pop) {
     }
     draw_annotations(annotations, parties, d => d.name, 'black', d => x(d.x), party_name_offset,
     d => d.name, 'middle', big_font_size, t);
+
+    // background
+    draw_background(75, t);
     
   }
 
@@ -548,6 +565,9 @@ function election_results_step_maker(full_pop) {
     var winning_parties = ['ps', 'mr', 'ecolo', 'ptb', 'cdh'];
     draw_annotations(annotations, parties, d => d.name, 'black', d => x(d.x), party_name_offset,
     d => d.name, 'middle', big_font_size, t, d => (winning_parties.includes(d.name))? 1 : default_faded_opacity);
+
+    // background
+    draw_background(75, t);
   }
   return election_results_step;
 }
@@ -602,6 +622,9 @@ function election_results_list_step_maker(full_pop) {
     draw_annotations(annotations, data, d => d.id, 'black', 
       d => x(d.s_res_list.x)+10, d => y(d.s_res_list.y)+5,
       d => (w < 758) ? `${get_initials(d.first_name)} ${d.last_name}` : `${d.first_name} ${d.last_name}`, 'left', small_font_size, t);
+
+    // background
+    draw_background(75, t);
   }
 
   return election_results_step;
@@ -696,6 +719,8 @@ function hemicycle_step_maker(full_pop) {
     // annotations
     draw_annotations(annotations, []);
     
+    // background
+    draw_background(0, t);
   }
 
   return hemicycle_step;
@@ -738,6 +763,9 @@ function speakers_step_maker(full_pop) {
     
     // annotations
     draw_annotations(annotations, []);
+
+    // background
+    draw_background(0, t);
   }
 
   return speakers_step;
@@ -777,6 +805,9 @@ function speakers_growing_bubbles_step_maker(full_pop) {
     draw_annotations(annotations, top5, d => d.id, 'black', 
     d => x(d.s6.x), d => y(d.s6.y), d => `${get_initials(d.first_name)} ${d.last_name}`, 
     'middle', font_size, t);
+
+    // background
+    draw_background(0, t);
   }
 
   return speakers_growing_bubbles_step;
@@ -785,11 +816,26 @@ function speakers_growing_bubbles_step_maker(full_pop) {
 function biggest_speakers_step_maker(full_pop) {
 
   function determine_area_limits() {
-    var viewport_width = document.documentElement.clientWidth;
-    var viewport_height = document.documentElement.clientHeight;
+    var w = document.documentElement.clientWidth;
+    var h = document.documentElement.clientHeight;
+
+    if (w > h) {
+      return {
+        min_x: std_limits.min_x+10,
+        max_x: std_limits.max_x,
+        min_y: std_limits.min_y+20,
+        max_y: std_limits.max_y-20,
+      }
+    }
+    else {
+      return {
+        min_x: std_limits.min_x+10,
+        max_x: std_limits.max_x,
+        min_y: std_limits.min_y+15,
+        max_y: std_limits.max_y-25,
+      }
+    }
   
-    // {min_x, max_x, min_y, max_y}
-    return std_limits
   }
 
   
@@ -797,8 +843,8 @@ function biggest_speakers_step_maker(full_pop) {
   var limits = determine_area_limits();
   
   var n = 10;
-  var bubbles_x_pos = limits.min_x + 10;
-  var topn_scale = d3.scaleLinear().domain([0, n-1]).range([20, 80]);
+  var bubbles_x_pos = limits.min_x;
+  var topn_scale = d3.scaleLinear().domain([0, n-1]).range([limits.min_y, limits.max_y]);
 
   var data = full_pop.filter(c => c.nbr_of_words) // only keep persons who spoke
   data.sort((a, b) => b.nbr_of_words - a.nbr_of_words)
@@ -835,9 +881,12 @@ function biggest_speakers_step_maker(full_pop) {
     // Draw the text
     draw_annotations(
       annotations, data, d => d.id, 'black',
-      d => x(d.s7.x + 10),  d => y(d.s7.y), d => `${d.first_name} ${d.last_name}, ${d.s7.role}`,
+      d => x(d.s7.x + 10),  d => y(d.s7.y)+font_size/2, d => `${d.first_name} ${d.last_name}, ${d.s7.role}`,
       'left', font_size, t
     );
+
+    // background
+    draw_background(limits.max_y+5, t);
   }
 
   return biggest_speakers_step;
@@ -868,6 +917,9 @@ function normal_pm_step_maker(full_pop) {
     
     // annotations
     draw_annotations(annotations, []);
+
+    // background
+    draw_background(0, t);
     
   }
 
@@ -951,6 +1003,9 @@ function normal_pm_plot_step_maker(full_pop) {
 
     // annotations
     draw_annotations(annotations, []);
+
+    // background
+    draw_background(70, t);
     
   }
 
@@ -1153,7 +1208,10 @@ function avg_pm_plot_step_maker(full_pop) {
     
     // annotations
     draw_annotations(annotations, []);
+    
 
+    // background
+    draw_background(70, t);
     
   }
 
@@ -1205,6 +1263,9 @@ function speaking_time_step_maker(full_pop) {
 
     draw_annotations(annotations, data, d => d.id, 'black', d => x(d.x), d => y(d.y),
     d => `${d.perc.toPrecision(3)}%`, 'middle', big_font_size, t);
+
+    // background
+    draw_background(0, t);
   }
 
   return speaking_time_step;
@@ -1280,6 +1341,9 @@ function speaking_time_evolution_step_maker(full_pop) {
     
     // Draw the axes
     select_or_create(time_chart.chart, 'g', [['class', 'plot_axis']]).call(time_chart.short_xAxis);
+
+    // background
+    draw_background(70, t);
     
   }
 
@@ -1337,6 +1401,8 @@ function speaking_time_regression_step_maker(full_pop) {
     // Draw the axes
     select_or_create(time_chart.chart, 'g', [['class', 'plot_axis']]).call(time_chart.short_xAxis);
     
+    // background
+    draw_background(70, t);
   }
 
   speaking_time_regression_step.leave = function() {
@@ -1397,6 +1463,9 @@ function speaking_time_projection_step_maker(full_pop) {
     // Draw the axes
     select_or_create(time_chart.chart, 'g', [['class', 'plot_axis']]).call(time_chart.short_xAxis)
       .transition(t).call(time_chart.long_xAxis);
+    
+    // background
+    draw_background(70, t);
     
   }
 
