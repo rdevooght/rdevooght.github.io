@@ -75,7 +75,7 @@ d3.selectAll('.step_text p').each(function() {
   var classes = this.className.split(' ');
   var selection = d3.select(this);
   for (c of classes) {
-    if (c.match(/m[btlrvh]\d+/)) {
+    if (c.match(/^m[btlrvh]\d+/)) {
       if (c[1] == 'b') {
         selection.style('margin-bottom', `${viewport_height * Number(c.slice(2)) / 100}px`);
       }
@@ -95,6 +95,33 @@ d3.selectAll('.step_text p').each(function() {
       else if (c[1] == 'h') {
         selection.style('margin-left', `${viewport_width * Number(c.slice(2)) / 100}px`);
         selection.style('margin-right', `${viewport_width * Number(c.slice(2)) / 100}px`);
+      }
+    }
+  }
+
+  if (w < h) {
+    for (c of classes) {
+      if (c.match(/^sm[btlrvh]\d+/)) {
+        if (c[2] == 'b') {
+          selection.style('margin-bottom', `${viewport_height * Number(c.slice(3)) / 100}px`);
+        }
+        else if (c[2] == 't') {
+          selection.style('margin-top', `${viewport_height * Number(c.slice(3)) / 100}px`);
+        }
+        else if (c[2] == 'l') {
+          selection.style('margin-left', `${viewport_width * Number(c.slice(3)) / 100}px`);
+        }
+        else if (c[2] == 'r') {
+          selection.style('margin-right', `${viewport_width * Number(c.slice(3)) / 100}px`);
+        }
+        else if (c[2] == 'v') {
+          selection.style('margin-top', `${viewport_height * Number(c.slice(3)) / 100}px`);
+          selection.style('margin-bottom', `${viewport_height * Number(c.slice(3)) / 100}px`);
+        }
+        else if (c[2] == 'h') {
+          selection.style('margin-left', `${viewport_width * Number(c.slice(3)) / 100}px`);
+          selection.style('margin-right', `${viewport_width * Number(c.slice(3)) / 100}px`);
+        }
       }
     }
   }
@@ -304,14 +331,6 @@ function draw_annotations(parent, data, id_func, color, x, y, text, anchor, font
   );
 }
 
-function draw_background(limit, transition) {
-  if (limit < 10) {
-    limit = 10;
-  }
-  svg//.transition(transition)
-    .style('background', `linear-gradient(180deg, rgba(249,255,254,1) 0%, rgba(249,255,254,0.95) ${limit-5}%, rgba(249,255,254,0) ${limit+5}%, rgba(249,255,254,0) 100%)`);
-}
-
 function step1_maker(full_pop) {
   var speed = 0.02;
   var angle_speed_change = 0.5;
@@ -344,9 +363,7 @@ function step1_maker(full_pop) {
     // annotations
     draw_annotations(annotations, []);
 
-    // background
-    draw_background(0, t);
-      
+              
     t.end().then(function() {launch_random_movement()}, function() {console.log('s1 transition failed')});
   }
   
@@ -475,9 +492,7 @@ function candidates_step_maker(full_pop) {
     draw_annotations(annotations, parties, d => d.name, 'black', d => x(d.x), party_name_offset,
     d => d.name, 'middle', big_font_size, t);
 
-    // background
-    draw_background(75, t);
-  }
+          }
 
   return candidates_step;
 }
@@ -518,9 +533,7 @@ function gendered_candidates_step_maker(full_pop) {
     draw_annotations(annotations, parties, d => d.name, 'black', d => x(d.x), party_name_offset,
     d => d.name, 'middle', big_font_size, t);
 
-    // background
-    draw_background(75, t);
-    
+            
   }
 
   return gendered_candidates_step;
@@ -563,9 +576,7 @@ function election_results_step_maker(full_pop) {
     draw_annotations(annotations, parties, d => d.name, 'black', d => x(d.x), party_name_offset,
     d => d.name, 'middle', big_font_size, t, d => (winning_parties.includes(d.name))? 1 : default_faded_opacity);
 
-    // background
-    draw_background(75, t);
-  }
+          }
   return election_results_step;
 }
 
@@ -619,9 +630,7 @@ function election_results_list_step_maker(full_pop) {
       d => x(d.s_res_list.x)+10, d => y(d.s_res_list.y)+5,
       d => (w < 758) ? `${get_initials(d.first_name)} ${d.last_name}` : `${d.first_name} ${d.last_name}`, 'left', small_font_size, t);
 
-    // background
-    draw_background(75, t);
-  }
+          }
 
   return election_results_step;
 }
@@ -714,9 +723,7 @@ function hemicycle_step_maker(full_pop) {
     // annotations
     draw_annotations(annotations, []);
     
-    // background
-    draw_background(0, t);
-  }
+          }
 
   return hemicycle_step;
 
@@ -758,9 +765,7 @@ function speakers_step_maker(full_pop) {
     // annotations
     draw_annotations(annotations, []);
 
-    // background
-    draw_background(0, t);
-  }
+          }
 
   return speakers_step;
 }
@@ -799,9 +804,7 @@ function speakers_growing_bubbles_step_maker(full_pop) {
     d => x(d.s6.x), d => y(d.s6.y), d => `${get_initials(d.first_name)} ${d.last_name}`, 
     'middle', font_size, t);
 
-    // background
-    draw_background(0, t);
-  }
+          }
 
   return speakers_growing_bubbles_step;
 }
@@ -877,9 +880,7 @@ function biggest_speakers_step_maker(full_pop) {
       'left', font_size, t
     );
 
-    // background
-    draw_background(limits.max_y+5, t);
-  }
+          }
 
   return biggest_speakers_step;
 }
@@ -909,9 +910,7 @@ function normal_pm_step_maker(full_pop) {
     // annotations
     draw_annotations(annotations, []);
 
-    // background
-    draw_background(0, t);
-    
+            
   }
 
   return normal_pm_step;
@@ -994,9 +993,7 @@ function normal_pm_plot_step_maker(full_pop) {
     // annotations
     draw_annotations(annotations, []);
 
-    // background
-    draw_background(70, t);
-    
+            
   }
 
   normal_pm_plot_step.leave = function() {
@@ -1199,9 +1196,7 @@ function avg_pm_plot_step_maker(full_pop) {
     draw_annotations(annotations, []);
     
 
-    // background
-    draw_background(70, t);
-    
+            
   }
 
   avg_pm_plot_step.leave = function() {
@@ -1248,9 +1243,7 @@ function speaking_time_step_maker(full_pop) {
     draw_annotations(annotations, data, d => d.id, 'black', d => x(d.x), d => y(d.y),
     d => `${d.perc.toPrecision(3)}%`, 'middle', big_font_size, t);
 
-    // background
-    draw_background(0, t);
-  }
+          }
 
   return speaking_time_step;
 }
@@ -1325,9 +1318,7 @@ function speaking_time_evolution_step_maker(full_pop) {
     // Draw the axes
     select_or_create(time_chart.chart, 'g', [['class', 'plot_axis']]).call(time_chart.short_xAxis);
 
-    // background
-    draw_background(70, t);
-    
+            
   }
 
   speaking_time_evolution_step.leave = function() {
@@ -1383,9 +1374,7 @@ function speaking_time_regression_step_maker(full_pop) {
     // Draw the axes
     select_or_create(time_chart.chart, 'g', [['class', 'plot_axis']]).call(time_chart.short_xAxis);
     
-    // background
-    draw_background(70, t);
-  }
+          }
 
   speaking_time_regression_step.leave = function() {
     time_chart.chart.select('g.plot_axis').selectChildren().remove();
@@ -1445,9 +1434,7 @@ function speaking_time_projection_step_maker(full_pop) {
     select_or_create(time_chart.chart, 'g', [['class', 'plot_axis']]).call(time_chart.short_xAxis)
       .transition(t).call(time_chart.long_xAxis);
     
-    // background
-    draw_background(70, t);
-    
+            
   }
 
   speaking_time_evolution_step.leave = function() {
