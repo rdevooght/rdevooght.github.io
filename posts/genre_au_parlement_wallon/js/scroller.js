@@ -109,12 +109,6 @@ function scroller() {
       dispatch.call('active', this, sectionIndex);
       currentIndex = sectionIndex;
     }
-
-    var top = sectionPositions[currentIndex];
-    var height = sectionHeights[currentIndex];
-    var progress = clamp((pos - top) / height, 0, 1);
-    // @v4 you now `.call` the dispatch callback
-    dispatch.call('progress', this, currentIndex, progress);
   }
 
   /**

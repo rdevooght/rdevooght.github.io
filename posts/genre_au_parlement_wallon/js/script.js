@@ -43,7 +43,6 @@ var dichotomy_colors = {
   'M': '#cda318',
 };
 var default_faded_opacity = 0.2;
-var pop_size = 3000;
 
 /* Styling and sizing */
 var viewport_width = document.documentElement.clientWidth;
@@ -58,6 +57,7 @@ if (w > 768) {
   font_size = 16;
   big_font_size = 24;
 }
+var pop_size = (w > 768) ? 3000 : 1500;
 
 d3.selectAll('.step').style('min-height', function() {
   var classes = this.className.split(' ');
@@ -452,8 +452,7 @@ function candidates_step_maker(full_pop) {
   candidates_step.show = function() {
     
 
-    console.log(data)
-
+    
     const t = svg.transition()
       .duration(transition_duration);
 
@@ -497,8 +496,7 @@ function gendered_candidates_step_maker(full_pop) {
   gendered_candidates_step.show = function() {
     
 
-    console.log(data)
-
+    
     const t = svg.transition()
       .duration(transition_duration);
 
@@ -542,8 +540,7 @@ function election_results_step_maker(full_pop) {
   election_results_step.show = function() {
     
 
-    console.log(data)
-
+    
     const t = svg.transition()
       .duration(transition_duration);
 
@@ -562,7 +559,7 @@ function election_results_step_maker(full_pop) {
         count: data.filter(c => c.parti.toLowerCase() == p).length
       });
     }
-    var winning_parties = ['ps', 'mr', 'ecolo', 'ptb', 'cdh'];
+    var winning_parties = ['PS', 'MR', 'ECOLO', 'PTB', 'cdH'];
     draw_annotations(annotations, parties, d => d.name, 'black', d => x(d.x), party_name_offset,
     d => d.name, 'middle', big_font_size, t, d => (winning_parties.includes(d.name))? 1 : default_faded_opacity);
 
@@ -606,8 +603,7 @@ function election_results_list_step_maker(full_pop) {
   election_results_step.show = function() {
     
 
-    console.log(data)
-
+    
     const t = svg.transition()
       .duration(transition_duration);
 
@@ -704,8 +700,7 @@ function hemicycle_step_maker(full_pop) {
 
   hemicycle_step.show = function() {
 
-    console.log(data)
-    
+        
     const t = svg.transition()
       .duration(transition_duration);
 
@@ -749,8 +744,7 @@ function speakers_step_maker(full_pop) {
 
   speakers_step.show = function() {
 
-    console.log(data)
-    
+        
     const t = svg.transition()
       .duration(transition_duration);
 
@@ -788,8 +782,7 @@ function speakers_growing_bubbles_step_maker(full_pop) {
 
   speakers_growing_bubbles_step.show = function() {
 
-    console.log(data)
-    
+        
     const t = svg.transition()
       .duration(transition_duration);
 
@@ -866,8 +859,7 @@ function biggest_speakers_step_maker(full_pop) {
   biggest_speakers_step.show = function() {
     svg.select('g.pie_chart').remove();
 
-    console.log(data)
-    
+        
     const t = svg.transition()
       .duration(transition_duration);
 
@@ -902,8 +894,7 @@ function normal_pm_step_maker(full_pop) {
 
   normal_pm_step.show = function() {
 
-    console.log(data)
-    
+        
     const t = svg.transition()
       .duration(transition_duration);
 
@@ -985,8 +976,7 @@ function normal_pm_plot_step_maker(full_pop) {
   normal_pm_plot_step.show = function() {
     svg.select('g.pie_chart').remove();
 
-    console.log(data)
-    
+        
     const t = svg.transition()
       .duration(transition_duration);
 
@@ -1106,8 +1096,7 @@ function avg_pm_plot_step_maker(full_pop) {
   avg_pm_plot_step.show = function() {
     svg.select('g.pie_chart').remove();
 
-    console.log(data)
-    
+        
     const t = svg.transition()
       .duration(transition_duration);
 
@@ -1242,16 +1231,11 @@ function speaking_time_step_maker(full_pop) {
     },
   ];
 
-
-
   var speaking_time_step = Object.create(step);
   
 
   speaking_time_step.show = function() {
-
-
-    console.log(data)
-    
+  
     const t = svg.transition()
       .duration(transition_duration);
     
@@ -1318,8 +1302,7 @@ function speaking_time_evolution_step_maker(full_pop) {
   speaking_time_evolution_step.show = function() {
 
 
-    console.log(data)
-    
+        
     const t = svg.transition()
       .duration(transition_duration);
 
@@ -1366,8 +1349,7 @@ function speaking_time_regression_step_maker(full_pop) {
   speaking_time_regression_step.show = function() {
 
 
-    console.log(data)
-    
+        
     const t = svg.transition()
       .duration(transition_duration);
 
@@ -1428,8 +1410,7 @@ function speaking_time_projection_step_maker(full_pop) {
   speaking_time_evolution_step.show = function() {
 
 
-    console.log(data)
-    
+        
     const t = svg.transition()
       .duration(transition_duration);
 
@@ -1542,19 +1523,6 @@ scroll.on('active', function (index) {
     d3.select(this).select('.legend')
       .style('display', (i == index) ? 'block' : 'none');
   });
-
-  // for (var i = 0; i < steps.length; i++) {
-  //   if (i < index) {
-  //     steps[i].show();
-  //   } else if (i > index) {
-  //     steps[i].hide();
-  //   }
-  // }
-});
-
-scroll.on('progress', function (index, progress) {
-  console.log(index, progress);
-  //steps[index].progress(progress);
 });
 
 d3.select('#sections').style('visibility', 'visible');
