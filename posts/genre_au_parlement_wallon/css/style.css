@@ -185,10 +185,19 @@ h2 {
   margin-bottom: 0.5rem;
 }
 
+.social_media {
+  margin-top: 1.5rem;
+}
+
 .social_media a {
   color: rgb(63, 63, 63);
   text-decoration: none;
-  font-size: 1.25rem;
+}
+
+.social_media a svg {
+  height: 2rem;
+  width: 2rem;
+  margin-right: 5px;
 }
 
 .bi-rss-fill:hover {
