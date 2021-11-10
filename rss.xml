@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+   <channel>
+      <title>Robin Devooght</title>
+      <link>https://blog.robindevooght.be</link>
+      <description>Des expériences en data science et data journalism</description>
+      <language>fr</language>
+      <docs>https://www.rssboard.org/rss-specification</docs>
+      <managingEditor>rdev@posteo.net</managingEditor>
+      <webMaster>rdev@posteo.net</webMaster>
+      <item>
+         <title>Genre et temps de parole au parlement wallon</title>
+         <link>https://blog.robindevooght.be/posts/genre_au_parlement_wallon/</link>
+         <description>Les hommes occupent plus de 80% du temps de parole au parlement wallon. Une plongée visuelle dans cette inégalité.</description>
+         <pubDate>Mon, 15 Nov 2021 00:00:00 GMT</pubDate>
+      </item>
+   </channel>
+</rss>
