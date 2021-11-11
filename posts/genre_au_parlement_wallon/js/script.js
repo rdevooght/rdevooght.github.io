@@ -1,4 +1,5 @@
 var raw_yearly_data_no_pres = {"2014":{"F":63236,"M":264661},"2015":{"F":141265,"M":739295},"2016":{"F":283882,"M":937642},"2017":{"F":170858,"M":803889},"2018":{"F":293718,"M":823129},"2019":{"F":166274,"M":442851},"2020":{"F":196220,"M":599673},"2021":{"F":182315,"M":417339}};
+// var raw_yearly_data = {"2014":{"F":63236,"M":264661},"2015":{"F":141265,"M":739295},"2016":{"F":283882,"M":937642},"2017":{"F":170858,"M":803889},"2018":{"F":293718,"M":823129},"2019":{"F":166274,"M":442851},"2020":{"F":196220,"M":599673},"2021":{"F":182315,"M":417339}};
 var raw_yearly_data = {"2014":{"F":63236,"M":352984},"2015":{"F":141265,"M":1051089},"2016":{"F":283882,"M":1285445},"2017":{"F":170858,"M":1178282},"2018":{"F":293718,"M":1382808},"2019":{"F":166274,"M":886643},"2020":{"F":196220,"M":917297},"2021":{"F":182315,"M":637687}};
 function raw_to_Array(object) {
   var a = [];
@@ -1252,7 +1253,7 @@ var time_chart = function(){
   var chart = svg.select('#historical_chart');
   var limits = std_limits;
   var padding = 10;
-  var plot_window = {x0: x(limits.min_x+padding), x1: x(limits.max_x-padding), y0: y(limits.max_y-2*padding), y1: y(limits.min_y+2*padding)};
+  var plot_window = {x0: x(limits.min_x+padding), x1: x(limits.max_x-padding), y0: y(limits.max_y-2.5*padding), y1: y(limits.min_y+1.5*padding)};
   var year_scale = d3.scaleLinear().domain([2015, 2021]).nice().range([plot_window.x0, plot_window.x1]);
   var extended_year_scale = d3.scaleLinear().domain([2015, 2050]).nice().range([plot_window.x0, plot_window.x1]);
   var speaking_ratio_scale = d3.scaleLinear().domain([0, 60]).nice().range([plot_window.y0, plot_window.y1]);
@@ -1412,10 +1413,11 @@ function speaking_time_projection_step_maker(full_pop) {
     );
 
     // Draw annotations
+    var show_annotation = [true, false, false, false, false, false, true, true]
     draw_annotations(
       annotations, data, d => `F-${d.year}`,  d => (d.color !== undefined) ? d.color : dichotomy_colors['F'],
       d => time_chart.extended_year_scale(d.year), d => time_chart.speaking_ratio_scale(d.ratio) - 10,
-      d => `${d.ratio.toPrecision(3)}%`, 'middle', font_size, t
+      (d,i) => (show_annotation[i]) ? `${d.ratio.toPrecision(3)}%` : '', 'middle', font_size, t
     )
     
       
