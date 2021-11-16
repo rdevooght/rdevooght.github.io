@@ -681,7 +681,10 @@ function hemicycle_step_maker(full_pop) {
     return hemicycle_points.map(d => ({x: d.x/xy_ratio+center_x, y: d.y+center_y, angle: d.angle}));
   }
 
-  hemicycle_points = make_hemicycle(6, 3, 25, 50, xy_ratio);
+  var parliament_center = {x: 25, y: 50};
+  var ministers_center = {x: 75, y: 50};
+  var row_width = 3*scaling_factor;
+  hemicycle_points = make_hemicycle(2*row_width, row_width, parliament_center.x, parliament_center.y, xy_ratio);
 
   // Extract members of parliament and position them
   var pm = full_pop.filter(c => c.member_of_parliament);
@@ -695,11 +698,10 @@ function hemicycle_step_maker(full_pop) {
 
   // Extract ministers and position them
   var ministers = full_pop.filter(c => c.mandates && c.mandates.includes('ministre') && c.last_name != 'Collignon');
-  var row_width = 3;
   for (var i = 0; i < ministers.length; i++) {
     ministers[i].s4 = {
-      x: 75 + (i%3) * row_width/xy_ratio,
-      y: 50 - Math.floor(i / 3) * row_width
+      x: ministers_center.x + (i%3 - 1) * row_width/xy_ratio,
+      y: ministers_center.y - Math.floor(i / 3) * row_width
     }
   }
 
@@ -722,7 +724,11 @@ function hemicycle_step_maker(full_pop) {
     );
     
     // annotations
-    draw_annotations(annotations, []);
+    draw_annotations(annotations, [
+      {text: 'Député.es', pos: parliament_center},
+      {text: 'Ministres', pos: ministers_center}
+    ], d => d.text, 'black', d => x(d.pos.x), d => y(d.pos.y)+2*big_font_size, d => d.text,
+    'middle', big_font_size, t);
     
           }
 
