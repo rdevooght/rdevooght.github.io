@@ -23,7 +23,7 @@ function get_initials(name) {
  * @param {*} param 
  * @returns 
  */
- function eval_if_function(val_or_function, param) {
+function eval_if_function(val_or_function, param) {
   if (typeof val_or_function == 'function') {
     return val_or_function(param);
   }

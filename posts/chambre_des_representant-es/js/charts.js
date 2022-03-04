@@ -192,6 +192,10 @@ function myBubbleChart(data, {
 } = {}) {
 
   const limits = {xMin: 0, xMax: width, yMin: 0, yMax: height};
+  const fontSize = (width < 600) ? 14 : 20;
+  const min_radius_for_label = (width < 600) ? 20 : 35;
+
+
 
   const radius_limits = [2, 1000];
   var r = optimalCircleScale(
@@ -268,7 +272,7 @@ function myBubbleChart(data, {
       .attr("viewBox", [0, 0, width, height])
       .attr("style", "max-width: 100%; height: auto; height: intrinsic;")
       .attr("fill", "currentColor")
-      .attr("font-size", 10)
+      .attr("font-size", fontSize)
       .attr("font-family", "sans-serif")
       .attr("text-anchor", "middle");
 
@@ -290,7 +294,6 @@ function myBubbleChart(data, {
     // A unique identifier for clip paths (to avoid conflicts).
     const uid = `O-${Math.random().toString(16).slice(2)}`;
 
-    const min_radius_for_label = 20;
 
     leaf.append("clipPath")
         .attr("id", i => `${uid}-clip-${i}`)
@@ -423,6 +426,97 @@ function quantilesChart(data, {
   svg.append("g")
       .attr("transform", `translate(0,${height - marginBottom})`)
       .call(xAxis);
+
+  return svg.node();
+}
+
+/**
+   * Return an array of 150 points ({x: x, y: y}) arranged in a hemicycle
+   * @param {float} inner_radius 
+   * @param {float} row_width 
+   * @param {float} center_x 
+   * @param {float} center_y 
+   * @returns 
+   */
+ function make_hemicycle(inner_radius, row_width, center_x, center_y, xy_ratio) {
+
+  /**
+   * returns the position of 'nbr_of_points' points on a hemicycle of radius 'radius',
+   * as an array of objects {x: x, y: y, angle: angle}
+   * @param {float} radius 
+   * @param {int} nbr_of_points 
+   */
+  function points_on_arc(radius, nbr_of_points) {
+    var points = [];
+    var angle = Math.PI/(nbr_of_points-1);
+    for (var i = 0; i < nbr_of_points; i++) {
+      points.push({
+        x: radius*Math.cos(angle*i),
+        y: -radius*Math.sin(angle*i),
+        angle: angle*i,
+      });
+    }
+    return points;
+  }
+
+
+  var arcs = [14, 16, 19, 21, 24, 26, 30];
+  var hemicycle_points = [];
+  for (var i = 0; i < arcs.length; i++) {
+    hemicycle_points = hemicycle_points.concat(points_on_arc(inner_radius+i*row_width, arcs[i]));
+  }
+  hemicycle_points.sort((a,b) => a.angle - b.angle);
+  return hemicycle_points.map(d => ({x: d.x/xy_ratio+center_x, y: d.y+center_y, angle: d.angle}));
+}
+
+// Based on https://observablehq.com/@d3/bubble-chart (Copyright 2021 Observable, Inc.)
+function drawHemicycle(data, { 
+  title, // given a node d, returns its hover text
+  width = 640, // outer width, in pixels
+  height = 400, // outer height, in pixels
+  color = "#ddd", // fill for leaf circles
+  fillOpacity, // fill opacity for leaf circles
+  group, // given a node d, returns its group name
+} = {}) {
+
+  const limits = {xMin: 0, xMax: width, yMin: 0, yMax: height};
+  const fontSize = (width < 600) ? 14 : 20;
+  const min_radius_for_label = (width < 600) ? 20 : 35;
+  
+
+  const D = d3.sort(data.map(d => ({
+    title: eval_if_function(title, d),
+    color: eval_if_function(color, d),
+    r: 5,
+    group: eval_if_function(group, d)
+  })), d => d.group);
+  const P = make_hemicycle(50, 20, width/2, height*0.8, width/height);
+  const I = d3.range(data.length);
+
+
+  const svg = d3.create("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .attr("viewBox", [0, 0, width, height])
+      .attr("style", "max-width: 100%; height: auto; height: intrinsic;")
+      .attr("fill", "currentColor")
+      .attr("font-size", fontSize)
+      .attr("font-family", "sans-serif")
+      .attr("text-anchor", "middle");
+
+  const leaf = svg.append('g')
+    .selectAll("g")
+    .data(I)
+    .join("g")
+      .attr("transform", i => `translate(${P[i].x},${P[i].y})`);
+
+  leaf.append("circle")
+      .attr("fill", i => D[i].color)
+      .attr("fill-opacity", fillOpacity)
+      .attr("r", i => D[i].r);
+
+  if (title) leaf.append("title")
+      .text(i => D[i].title);
 
   return svg.node();
 }

@@ -223,6 +223,10 @@ th {
     font-weight: bold;
 }
 
+th .subtitle {
+    font-weight: normal;
+}
+
 th, td {
     padding: 5px;
     border-bottom: 1px solid rgb(126, 126, 126);
@@ -277,4 +281,45 @@ td.worse {
 
 .social_media .bi-linkedin:hover {
     color: #0077b5;
+}
+
+/*
+    language setting
+*/
+
+#language-selector {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+}
+
+#language-selector button {
+    margin: 0;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+}
+
+#language-selector button:first-child {
+    border-radius: 5px 0 0 5px;
+}
+
+#language-selector button:last-child {
+    border-radius: 0 5px 5px 0;
+}
+
+#language-selector button:not(:last-child) {
+    border-right: none;
+}
+
+#language-selector button:hover {
+    background-color: #3476a2;
+    color: #fff;
+}
+
+#language-selector button.active {
+    background-color: #3476a2;
+    color: #fff;
 }

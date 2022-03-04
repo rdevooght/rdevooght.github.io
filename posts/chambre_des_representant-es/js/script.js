@@ -28,7 +28,7 @@ document.getElementsByTagName('html')[0].addEventListener('click', function() {
   close_all_popups();
 });
 
-for (let footnote of document.getElementsByClassName('footnote')) {
+function make_footnote(footnote) {
   footnote.addEventListener('click', function(event){
     event.stopPropagation();
     
@@ -73,6 +73,10 @@ for (let footnote of document.getElementsByClassName('footnote')) {
   });
 }
 
+for (let footnote of document.getElementsByClassName('footnote')) {
+  make_footnote(footnote);
+}
+
 /*
   "Show more"
 */
@@ -88,6 +92,87 @@ for (let showmore of document.querySelectorAll('.show-more-link')) {
     return false;
   });
 }
+
+/*
+ Translations
+*/
+function translation_key(text) {
+  return text.toLowerCase().replace(/\s+/g, '').replace(/<[^>]+>/g, '');
+}
+
+function get_translation(text, target_lang) {
+  let key = translation_key(text);
+  for (let t of translations) {
+    for (let lang in t) {
+      if (lang != target_lang) {
+        if (translation_key(t[lang]) == key && t[target_lang]) {
+          return t[target_lang];
+        }
+      }
+    }
+  }
+  return false;
+}
+
+function translate(target_lang) {
+  close_all_popups();
+
+  // loop over all elements of the page
+  // if the text is found in the translations array, replace it
+
+  // first loop over the p and h elements
+  for (let element of document.querySelectorAll('h1, h2, h3, h4, p')) {
+    if (element.textContent) {
+      let t = get_translation(element.textContent, target_lang);
+      if (t) {
+        if (t.match(/<[^>]+>/)) {
+          element.innerHTML = t;
+          if (element.querySelector('.footnote')) {
+            make_footnote(element.querySelector('.footnote'));
+          }
+        }
+        else element.textContent = t;
+      }
+    }
+  }
+
+  // then loop over the a.footnote elements
+  for (let a of document.querySelectorAll('a.footnote')) {
+    if (a.getAttribute('footnote-content')) {
+      let t = get_translation(a.getAttribute('footnote-content'), target_lang);
+      if (t) {
+        a.setAttribute('footnote-content', t);
+      }
+    }
+  }
+
+  // Change the state of the language buttons
+  for (let e of document.getElementsByClassName('translate-button')) {
+    if (e.getAttribute('data-lang') == target_lang) {
+      e.classList.add('active');
+    } else {
+      e.classList.remove('active');
+    }
+  }
+}
+
+for (let elem of document.getElementsByClassName('translate-button')) {
+  elem.addEventListener('click', function(event){
+    event.stopPropagation();
+    translate(this.getAttribute('data-lang'));
+  });
+}
+
+function guess_language() {
+  let lang = navigator.language || navigator.userLanguage;
+  if (lang == 'nl') {
+    return 'nl';
+  }
+  return 'fr';
+}
+
+// Set default language
+translate(guess_language());
 
 
 /*
@@ -201,4 +286,7 @@ var evolution_of_wps = quantilesChart(d3.filter(data.words_per_session_per_group
   tickFormat: d => legis_labels[d],
 })
 
+document.getElementById('evolution_of_wps').innerHTML = "";
 document.getElementById('evolution_of_wps').appendChild(evolution_of_wps);
+
+
