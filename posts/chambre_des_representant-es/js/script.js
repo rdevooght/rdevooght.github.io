@@ -121,9 +121,20 @@ function translate(target_lang) {
   // if the text is found in the translations array, replace it
 
   // first loop over the p and h elements
-  for (let element of document.querySelectorAll('h1, h2, h3, h4, p')) {
+  for (let element of document.querySelectorAll('h1, h2, h3, h4, p, th, td, text')) {
     if (element.textContent) {
-      let t = get_translation(element.textContent, target_lang);
+      let text = element.textContent;
+      let t = get_translation(text, target_lang);
+
+      if (!t && element.querySelector('.footnote')) {
+        text = element.innerHTML;
+        let end_with_footnote = text.match(/(.+)(<a class="footnote" footnote-content="[^"]+">\?<\/a>)/);
+        if (end_with_footnote) {
+          t = get_translation(end_with_footnote[1], target_lang)
+          if (t) t+= end_with_footnote[2];
+        }
+      }
+      
       if (t) {
         if (t.match(/<[^>]+>/)) {
           element.innerHTML = t;

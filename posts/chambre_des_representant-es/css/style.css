@@ -29,6 +29,7 @@ h1 {
     /* font-weight: bold; */
     margin: 1em 20px 10px;
     color: #032B3A;
+    hyphens: manual;
 }
 
 p {
