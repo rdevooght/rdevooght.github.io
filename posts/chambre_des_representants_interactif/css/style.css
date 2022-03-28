@@ -377,6 +377,18 @@ input#toggler:checked ~ aside {
     color: #0077b5;
 }
 
+#small_screen_warning p {
+    text-align: center;
+    font-style: italic;
+    color: #e30613;
+}
+
+@media only screen and (min-width: 800px) {
+    #small_screen_warning {
+        display: none;
+    }
+}
+
 /* Timeline */
 
 #timeline {
