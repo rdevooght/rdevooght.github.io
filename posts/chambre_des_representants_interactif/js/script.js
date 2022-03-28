@@ -91,6 +91,24 @@ var groupers = [
   {name: 'role', accessor: d => d.role, label: 'Role', values_label: roles_labels},
   {name: 'majority_opposition', accessor: d => d.majority_opposition, label: 'Majorité / Opposition', values_label: {'majority': 'Majorité', 'opposition': 'Opposition'}},
 ]
+
+// Add default color scale to groups that don't have special color
+for (g of groupers) {
+  if (!g.colors) {    
+    var scale = d3.scaleOrdinal(d3.schemeCategory10);
+    var possible_values = unique_values(d3.map(data.interventions_per_person, g.accessor));
+    g.colors = {};
+    for (v of possible_values) {
+      g.colors[v] = scale(v);
+    }
+  }
+
+  g.get_color = function(d) {
+    d = (typeof d == 'string') ? d : this.accessor(d);
+    return this.colors[d] || default_color;
+  }
+}
+
 function get_group(name) {
   return groupers.find(g => g.name == name);
 }
@@ -147,6 +165,10 @@ function get_share_url() {
   var url = window.location.protocol + window.location.hostname + window.location.pathname 
   url += '?options=' + encodeURI(JSON.stringify(options)) + '#explorer';
   return url;
+}
+
+function update_url() {
+  history.pushState(options, '', get_share_url());
 }
 
 
@@ -305,6 +327,7 @@ function show_timeline(e, d) {
   e.stopPropagation();
   d3.select('#timeline').style('display', 'block');
   options.show_timeline = d.name;
+  update_url();
 
   var timeline_data = get_year_evolution(d.name);
   var timeline_chart = timeline(timeline_data, {
@@ -358,12 +381,13 @@ function show_timeline(e, d) {
 function hide_timeline() {
   d3.select('#timeline').style('display', 'none');
   delete options.show_timeline;
+  update_url();
 }
 
 var chart = undefined;
 function draw_chart() {
 
-
+  update_url();
   var group = get_group(options.group);
 
   function title(d) {
@@ -454,22 +478,7 @@ d3.select('#grouper-selector .buttons')
       draw_chart();
     });
 
-// Coloring
-var coloring_options = [{name: 'default', label: 'Par défaut'}];
-for (let g of groupers) { coloring_options.push({name: g.name, label: g.label}); }
-d3.select('#coloring-selector .buttons')
-  .selectAll('button')
-  .data(coloring_options)
-  .join('button')
-    .attr('class', 'grouper')
-    .classed('active', d => d.name == options.coloring)
-    .attr('value', d => d.name)
-    .text(d => d.label)
-    .on('click', function() {
-      set_active(this);
-      options.coloring = this.value;
-      chart.update_colors(make_coloring_function());
-    });
+
 
 // Filters
 var filters = [];
@@ -478,6 +487,7 @@ for (g of groupers) {
 
   filters.push({
     name: g.name,
+    grouper: g,
     label: g.label,
     values: unique_values(d3.map(data.interventions_per_person, accessor)),
   });
@@ -535,7 +545,9 @@ d3.select('#filters')
       
       
       select.selectAll('li')
-          .data(d => d3.sort(d3.map(d.values, v => ({group: d.name, key: v, label: group_value_label(get_group(d.name), v)})), d => d.label.toLowerCase(), d3.ascending))
+          .data(d => d3.sort(d3.map(d.values, v => ({
+            group: d.name, key: v, label: group_value_label(d.grouper, v), color: d.grouper.get_color(v)
+          })), d => d.label.toLowerCase(), d3.ascending))
           .join('li')
             .call(li => {
               li.append('input')
@@ -550,6 +562,9 @@ d3.select('#filters')
                 .attr('name', d => d.key);
               li.append('label')
                 .text(d => d.label);
+              li.append('span')
+                .attr('class', 'color-sample')
+                .style('background-color', d => d.color);
             })
             .on('click', function(e) {
               e.stopPropagation();
@@ -580,6 +595,42 @@ d3.select('#filters')
             });
       
     });
+
+// Coloring
+var coloring_options = [{name: 'default', label: 'Par défaut', values: []}];
+for (let f of filters) { coloring_options.push(f); }
+d3.select('#coloring-selector .buttons')
+  .selectAll('button')
+  .data(coloring_options)
+  .join('button')
+    .attr('class', 'grouper')
+    .classed('active', d => d.name == options.coloring)
+    .attr('value', d => d.name)
+    .text(d => d.label)
+    .on('click', function() {
+      set_active(this);
+      options.coloring = this.value;
+      chart.update_colors(make_coloring_function());
+    })
+    .filter(d => d.values.length > 0)
+    .append('ul')
+      .attr('class', 'colors-legend')
+      .selectAll('li')
+      .data(d => d3.sort(d3.map(d.values, v => ({
+        group: d.name, key: v, label: group_value_label(d.grouper, v), color: d.grouper.get_color(v)
+      })), d => d.label.toLowerCase(), d3.ascending))
+      .join('li')
+      .call(li => {
+        li.append('span')
+          .attr('class', 'color-sample')
+          .style('background-color', d => d.color);
+        li.append('span')
+          .text(d => d.label);
+      })
+
+d3.selectAll('#coloring-selector .buttons ul')
+  .insert('li', ':first-child')
+    .text('Légende: ')
 
 // create svg
 var width = document.getElementById("chart").clientWidth;

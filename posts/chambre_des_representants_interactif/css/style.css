@@ -231,6 +231,15 @@ input#toggler:checked ~ aside {
     cursor: pointer;
 }
 
+.color-sample {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
 
 /*
     Years selector
@@ -285,6 +294,7 @@ input#toggler:checked ~ aside {
     color: black;
     padding: 5px;
     font-size: 0.9rem;
+    position: relative;
 }
 
 .button-selector button:hover {
@@ -336,6 +346,38 @@ input#toggler:checked ~ aside {
         grid-column: 2;
         grid-row: 1;
     }
+}
+
+.colors-legend {
+    display: none;
+    position: absolute;
+    width: 200px;
+    top: 40px;
+    left: 0;
+    background-color: white;
+    border: 1px solid gray;
+    box-shadow: 3px 1px 5px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+    padding: 0;
+    text-align: left;
+    color: black;
+}
+
+.colors-legend li{
+    padding: 10px;
+    border-bottom: 1px solid gray;
+}
+
+.colors-legend .color-sample {
+    margin-left: 0;
+}
+
+.colors-legend li:last-child{
+    border-bottom: none;
+}
+
+button:hover .colors-legend {
+    display: block;
 }
 
 /* 
