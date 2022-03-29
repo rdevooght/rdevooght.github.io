@@ -162,7 +162,7 @@ try {
 
 // Make url containing options
 function get_share_url(with_anchor=true) {
-  var url = window.location.protocol + window.location.hostname + window.location.pathname 
+  var url = window.location.protocol + '//' + window.location.hostname + window.location.pathname 
   url += '?options=' + encodeURI(JSON.stringify(options))
   if (with_anchor) url += '#explorer';
   return url;
