@@ -161,14 +161,15 @@ try {
 }
 
 // Make url containing options
-function get_share_url() {
+function get_share_url(with_anchor=true) {
   var url = window.location.protocol + window.location.hostname + window.location.pathname 
-  url += '?options=' + encodeURI(JSON.stringify(options)) + '#explorer';
+  url += '?options=' + encodeURI(JSON.stringify(options))
+  if (with_anchor) url += '#explorer';
   return url;
 }
 
 function update_url() {
-  history.pushState(options, '', get_share_url());
+  history.pushState(options, '', get_share_url(with_anchor=false));
 }
 
 
