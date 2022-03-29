@@ -4,6 +4,8 @@ Cette base de données sqlite contient une version structurée des comptes rendu
 sur la période allant de octobre 2006 à décembre 2021.
 Ces données ont été extraites des comptes rendus disponibles publiquement ici: [lachambre.be](https://www.lachambre.be/kvvcr/showpage.cfm?section=/cricra&language=fr&cfm=dcricra.cfm?type=plen&cricra=cri&count=all)
 
+A cause de la taille importante de ces données, la base de données fournie ici ne contient pas le contenu des interventions, mais uniquement le nombre de mots prononcés pour chaque interventions. Si vous voulez la base de données complète, incluant le contenu des interventions, n'hésitez pas à me contacter.
+
 Ce sont ces données qui ont permis l'analyse du temps de parole des hommes et femmes à la Chambre: https://blog.robindevooght.be/posts/chambre_des_representant-es/
 
 Je serais ravis d'aider d'autres personnes à utiliser ces données, donc n'hésitez pas à me contacter pour:
