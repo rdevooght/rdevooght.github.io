@@ -18,6 +18,7 @@ var party_colors = {
   'MR': '#0047ab',
   'CD&V': '#ff8000',
   'Vooruit': '#e30613',
+  'Vooruit / sp.a': '#e30613',
   'sp.a': '#e30613',
   'sp.a-spirit': '#e30613',
   'sp.a+Vl.Pro': '#e30613',
@@ -26,14 +27,14 @@ var party_colors = {
   'PTB-GO!': '#cc0000',
   'DéFI': '#e11482',
   'FDF': '#e11482',
-  'Autres': 'gray',
+  'DéFI / FDF': '#e11482',
 }
 
 var party_grouping = {
-  'Vooruit': 'Voruit / sp.a',
-  'sp.a': 'Voruit / sp.a',
-  'sp.a-spirit': 'Voruit / sp.a',
-  'sp.a+Vl.Pro': 'Voruit / sp.a',
+  'Vooruit': 'Vooruit / sp.a',
+  'sp.a': 'Vooruit / sp.a',
+  'sp.a-spirit': 'Vooruit / sp.a',
+  'sp.a+Vl.Pro': 'Vooruit / sp.a',
   'PVDA-PTB': 'PVDA-PTB',
   'PTB-GO!': 'PVDA-PTB',
   'DéFI': 'DéFI / FDF',
@@ -49,10 +50,10 @@ var party_grouping = {
 var default_color = 'gray';
 
 var roles_labels = {
-  'president': 'Président·es',
+  'president': 'Président·e du parlement',
   'bureau': 'Membres du bureau',
   'government': 'Membres du gouvernement',
-  'deputy': 'Député·es',
+  'deputy': 'Député·es (hors président·es)',
   'group president': 'Président·es de groupe',
 };
 
@@ -147,7 +148,7 @@ function grouped_party_accessor(d) {
 // check if options are passed in the url
 var options = {};
 try {
-  options = JSON.parse((new URLSearchParams(window.location.search)).get('options'));
+  options = JSON.parse(decodeURI(window.location.search.split('?options=')[1]));
   if (!options) {
     throw new Error('No options');
   }
@@ -264,7 +265,7 @@ function get_data() {
 /**
  * get the percentage of speach time for a given group every year
  */
-function get_year_evolution(group_value) {
+function get_year_evolution_of_group(group_value) {
   var group = get_group(options.group);
   var accessor = (group_value == 'CD&V' || group_value == 'N-VA') ? split_cdv_nva : group.accessor;
   var words_per_group = d3.flatRollup(
@@ -274,6 +275,7 @@ function get_year_evolution(group_value) {
     d => group_value_key(accessor(d))
   );
 
+  
   var words_per_year = d3.rollup(
     words_per_group,
     r => d3.sum(r, d => d[2]),
@@ -296,6 +298,40 @@ function get_year_evolution(group_value) {
   }
 
   return d3.sort(res, d => d.year);
+  
+}
+
+function get_year_evolution() {
+  var group = get_group(options.group);
+  var accessor = (group.name == 'party') ? split_cdv_nva : group.accessor;
+  var filtered_data = d3.filter(data.interventions_per_person, make_data_filter(any_year = true));
+  var words_per_group = d3.rollup(
+    filtered_data,
+    r => d3.sum(r, d => d.word_count),
+    d => d.year,
+    d => party_grouping[accessor(d)] || accessor(d)
+  );
+
+  var values = unique_values(d3.map(filtered_data, d => party_grouping[accessor(d)] || accessor(d)));
+
+  var result = [];
+  for (year of words_per_group.keys()) {
+    for (v of values) {
+      var words = 0;
+      if (words_per_group.get(year).has(v)) {
+        words = words_per_group.get(year).get(v);
+      }
+
+      result.push({
+        year: new Date(`${year}-01-01`), 
+        group_value: group_value_label(group, v), 
+        words: words,
+        color: group.get_color(v),
+      });
+    }
+  }
+
+  return d3.sort(result, d => d.year, d3.ascending);
 }
 
 function make_coloring_function() {
@@ -325,33 +361,79 @@ function make_coloring_function() {
 }
 
 function show_timeline(e, d) {
+
   e.stopPropagation();
   d3.select('#timeline').style('display', 'block');
-  options.show_timeline = d.name;
+  options.show_timeline = d ? d.name : true;
   update_url();
+  
+  if (d) {
+    var timeline_data = get_year_evolution_of_group(d.name);
+    var timeline_chart = timeline(timeline_data, {
+      x: d => d.year,
+      y: d => d.percentage,
+      xTicks: x => x % 2 == 1,
+      yDomain: [0, 1],
+      showYAxis: true,
+      width: document.getElementById("timeline-chart").clientWidth,
+      color: '#36637c'
+    });
 
-  var timeline_data = get_year_evolution(d.name);
-  var timeline_chart = timeline(timeline_data, {
-    x: d => d.year,
-    y: d => d.percentage,
-    xTicks: x => x % 2 == 1,
-    yDomain: [0, 1],
-    showYAxis: true,
-    width: document.getElementById("timeline-chart").clientWidth,
-    color: '#36637c'
-  });
+    // Construct timeline title
+    var title = 'Evolution du temps de parole ';
+    if (options.group == 'party') {
+      title += 'des membres du parti ' + d.name;
+    }
+    else if (options.group == 'majority_opposition') {
+      title += 'des membres de ';
+      title += d.name == 'majority' ? 'la majorité' : "l'opposition";
+    }
+    else {
+      title += 'des ' + group_value_label(get_group(options.group), d.name).toLowerCase();
+    }
 
-  // Construct timeline title
-  var title = 'Evolution du temps de parole ';
-  if (options.group == 'party') {
-    title += 'des membres du parti ' + d.name;
-  }
-  else if (options.group == 'majority_opposition') {
-    title += 'des membres de ';
-    title += d.name == 'majority' ? 'la majorité' : "l'opposition";
+    d3.select('#timeline-legend').style('display', 'none');
+
   }
   else {
-    title += 'des ' + group_value_label(get_group(options.group), d.name).toLowerCase();
+    var timeline_data = get_year_evolution();
+    var colors = d3.rollup(timeline_data, v => v[0].color, d => d.group_value);
+    var timeline_chart = StackedAreaChart(timeline_data, {
+      x: d => d.year,
+      y: d => d.words,
+      z: d => d.group_value,
+      width: document.getElementById("timeline-chart").clientWidth,
+      colors: colors,
+    });
+
+    // Construct timeline title
+    var title = 'Evolution du temps de parole ';
+    if (options.group == 'party') {
+      title += 'entre les partis';
+    }
+    else if (options.group == 'majority_opposition') {
+      title += 'entre la majorité et l\'opposition';
+    }
+    else if (options.group == 'gender') {
+      title += 'entre hommes et femmes';
+    }
+    else if (options.group == 'role') {
+      title += 'en fonction du role';
+    }
+
+    d3.select('#timeline-legend').style('display', 'flex')
+      .selectAll('div')
+      .data(colors.keys())
+      .join('div')
+      .call(div => {
+        div.selectAll('span').remove();
+        div.append('span')
+          .attr('class', 'color-sample')
+          .style('background-color', d => colors.get(d));
+        div.append('span')
+          .attr('class', 'legend-label')
+          .text(d => d);
+      })
   }
 
   document.querySelector("#timeline h2").innerHTML = title;
@@ -401,7 +483,7 @@ function draw_chart() {
 
   function groupLabel(g) {
     var name = group_value_label(group, g.name);
-    return `${name}: ${d3.format('.0%')(g.share)}`
+    return `${name}: ${d3.format('.0%')(g.share)}*`
   }
 
   var data = get_data();
@@ -650,8 +732,19 @@ svg.append('g').attr('class', 'group-labels');
 
 // Draw default chart
 draw_chart();
+
+// Main timeline
+d3.select('#show-timeline')
+    .style('cursor', 'pointer')  
+    .on('click', show_timeline);
+
 if (options.show_timeline) {
-  d3.select(`#group-label-${options.show_timeline}`).dispatch('click');
+  if (options.show_timeline === true) {
+    d3.select('#show-timeline').dispatch('click');
+  }
+  else {
+    d3.select(`#group-label-${options.show_timeline}`).dispatch('click');
+  }
 }
 
 // Hide timeline when clicking outside the box
@@ -664,6 +757,8 @@ document.getElementById('timeline').addEventListener('click', function(e) {
 d3.select('.close').on('click', function() {
   hide_timeline();
 });
+
+
 
 /* 
   Share button
@@ -681,7 +776,6 @@ for (let share of document.querySelectorAll('.share')) {
     if (this.getBoundingClientRect().right < window.innerWidth - 100) {
       temp_message.style.left = this.getBoundingClientRect().right + "px";
     } else {
-      console.log(this.getBoundingClientRect());
       temp_message.style.right = (window.innerWidth - this.getBoundingClientRect().left) + "px";
     }
     temp_message.style.position = "fixed";
@@ -693,3 +787,4 @@ for (let share of document.querySelectorAll('.share')) {
     }, 1000);
   });
 }
+

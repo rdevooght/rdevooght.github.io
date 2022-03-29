@@ -45,6 +45,15 @@
         Voici un outil pour vous permettre d’explorer ces données par vous-même: vous pouvez choisir comment grouper les interventions, 
         ajouter des filtres pour ne voir qu’une partie des interventions, et observer l’évolution d’année en année.
       </p>
+      <p>
+        Après avoir exploré, si vous voulez conserver ou partager un graphique en particulier, il suffit de cliquer une des icones suivantes: 
+        <a class="inline-share share" href="" title="Copier le lien pour partager cette vue">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+          </svg>
+        </a>.<br>
+        Cela copiera pour vous un lien vers la vue actuelle.
+      </p>
 
       <div id="small_screen_warning">
         <p>
@@ -89,6 +98,16 @@
               <div class="buttons"></div>
             </div>
           </div>
+          <div>
+            <div class="button-selector">
+              <button id="show-timeline">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07Z"/>
+                </svg>
+                Évolution sur 15 ans
+              </button>
+            </div>
+          </div>
         </div>
 
         <div id="chart">
@@ -96,9 +115,7 @@
         </div>
 
         <p class="tip">
-          (<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
-          </svg> Cliquez sur le nom d'un groupe pour voir l'évolution entre 2007 et 2021)
+          (* Cliquez sur le nom d'un groupe pour voir l'évolution entre 2007 et 2021)
         </p>
       </div>
     </div>
@@ -117,6 +134,9 @@
         </ul>
       </div>
       <div id="timeline-chart">
+      </div>
+
+      <div id="timeline-legend">
       </div>
     </div>
     

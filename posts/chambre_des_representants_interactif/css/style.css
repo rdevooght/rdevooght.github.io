@@ -85,11 +85,12 @@ h4 {
 
 #explorer {
     /* display: grid; */
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 320px 1fr;
     background-color: #f4f4f4;
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 20px;
+    padding-left: 10px;
     position: relative;
 }
 
@@ -115,11 +116,11 @@ h4 {
  Side bar
 */
 #side-selectors {
-    width: 300px;
+    width: 320px;
     position: absolute;
     left: 0;
     top: 0;
-  
+    z-index: 100;
     
 
     background-color: #f9fffe;
@@ -134,7 +135,7 @@ h4 {
     display: block;
     position: absolute;
     top: 50px;
-    left: 298px;
+    left: 318px;
     padding: 4px 11px;
     text-align: center;
     border: 1px solid gray;
@@ -150,7 +151,7 @@ input#toggler {
   
 /* Toggler Functionality */
 input#toggler:checked ~ aside {
-    left: -300px;
+    left: -320px;
 }
 
 .button-selector.vertical-selector .buttons {
@@ -236,7 +237,6 @@ input#toggler:checked ~ aside {
     width: 10px;
     height: 10px;
     margin-left: 10px;
-    margin-right: 10px;
     border-radius: 5px;
 }
 
@@ -315,6 +315,10 @@ input#toggler:checked ~ aside {
     border-radius: 0 5px 5px 0;
 }
 
+.button-selector button:last-child:first-child {
+    border-radius: 5px;
+}
+
 .button-selector button:not(:last-child) {
     border-right: none;
 }
@@ -354,6 +358,7 @@ input#toggler:checked ~ aside {
     width: 200px;
     top: 40px;
     left: 0;
+    z-index: 100;
     background-color: white;
     border: 1px solid gray;
     box-shadow: 3px 1px 5px 0px rgba(0, 0, 0, 0.75);
@@ -368,8 +373,9 @@ input#toggler:checked ~ aside {
     border-bottom: 1px solid gray;
 }
 
-.colors-legend .color-sample {
+.colors-legend .color-sample, #timeline-legend .color-sample {
     margin-left: 0;
+    margin-right: 10px;
 }
 
 .colors-legend li:last-child{
@@ -478,6 +484,11 @@ button:hover .colors-legend {
     line-height: 30px;
 }
 
+.inline-share.share {
+    display: inline;
+    position: static;
+}
+
 #timeline .share {
     left: 15px;
 }
@@ -503,6 +514,18 @@ button:hover .colors-legend {
 }
 #timeline-active-filters ul li {
     margin-left: 30px;
+}
+
+#timeline-legend {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+#timeline-legend div {
+    flex: auto;
+    padding-left: 20px;
 }
 
 #empty-data {
