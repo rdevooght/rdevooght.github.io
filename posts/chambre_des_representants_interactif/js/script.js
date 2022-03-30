@@ -718,6 +718,8 @@ d3.selectAll('#coloring-selector .buttons ul')
 // create svg
 var width = document.getElementById("chart").clientWidth;
 var height = window.innerHeight - document.getElementById("chart").getBoundingClientRect().top + document.getElementById("explorer").getBoundingClientRect().top - 20;
+height = Math.max(height, window.innerHeight * 0.7); // make sure the chart is not too small
+height = (width < 600) ? window.innerHeight : height;
 const svg = d3.select('#chart').append("svg")
       .attr("width", width)
       .attr("height", height)

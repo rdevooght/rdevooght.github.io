@@ -91,6 +91,7 @@ h4 {
     margin-bottom: 20px;
     padding: 20px;
     padding-left: 10px;
+    padding-top: 30px;
     position: relative;
 }
 
@@ -134,7 +135,7 @@ h4 {
 .sidebar-toggle {
     display: block;
     position: absolute;
-    top: 50px;
+    top: 2px;
     left: 318px;
     padding: 4px 11px;
     text-align: center;
