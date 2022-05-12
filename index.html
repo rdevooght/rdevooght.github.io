@@ -6,65 +6,63 @@
     <meta name="description" content="Des expériences en data science et data journalism" />
     <meta name="author" content="Robin Devooght" />
     <title>Robin Devooght</title>
-    <link href="css/pico.min.css" rel="stylesheet" />
+    <link href="css/reset.css" rel="stylesheet" />
+    <link href="css/tachyons.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
   </head>
   <body>
     
-    <header class="container">
-      <h1>Robin Devooght</h1>
+    <header class="pa3">
+      <h1 class="f1 lh-solid">Robin Devooght</h1>
       <nav>
-        <ul>
-          <li><a href="/index.html" role="button">Blog</a></li>
-          <li><a href="/about.html" role="button" class="outline">A propos</a></li>
-        </ul>
+        <a href="index.html" class="f6 link dim br2 ph3 pv2 mb2 dib white bg-dark-blue">Blog</a></li>
+        <a href="about.html" class="f6 link br2 ba ph3 pv2 mb2 dib dark-blue hover-white hover-bg-dark-blue">A propos</a>
+        
       </nav>
     </header>
     <!-- Main Content-->
-    <main class="container">
+    <main class="pa3">
       
       <!-- Post preview-->
-      <article class="post-preview">
-        <a href="/posts/chambre_des_representants_interactif/">
-          <hgroup>
-            <h2 class="post-title">Exploration du temps de parole à la Chambre des représentants</h2>
-            <h3 class="post-subtitle">Outil interactif pour explorer comment se répartit le temps de parole en fonction du genre, des partis, des fonctions, etc.</h3>
-          </hgroup>
+      <article class="pv4 bt bb b--black-10">
+        <a href="/posts/chambre_des_representants_interactif/" class="no-underline navy link hover-dark-blue">
+          <h2 class="f3">Exploration du temps de parole à la Chambre des représentants</h2>
+          <h3 class="f4 normal">Outil interactif pour explorer comment se répartit le temps de parole en fonction du genre, des partis, des fonctions, etc.</h3>
         </a>
-        <p class="post-meta">
+        <p class="mt1 gray">
           Publié le 28 mars 2022
         </p>
       </article>
-      <article class="post-preview">
-        <a href="/posts/chambre_des_representant-es/">
-          <h2 class="post-title">La Chambre des représentant&middot;es</h2>
-          <h3 class="post-subtitle">15 ans d'évolution du temps de parole des femmes et des hommes à la Chambre des représentants.</h3>
+      <article class="pv4 bb b--black-10">
+        <a href="/posts/chambre_des_representant-es/" class="no-underline navy">
+          <h2 class="f3">La Chambre des représentant&middot;es</h2>
+          <h3 class="f4 normal">15 ans d'évolution du temps de parole des femmes et des hommes à la Chambre des représentants.</h3>
         </a>
-        <p class="post-meta">
+        <p class="mt1 gray">
           Publié le 7 mars 2022
         </p>
       </article>
-      <article class="post-preview">
-        <a href="/posts/genre_au_parlement_wallon/">
-          <h2 class="post-title">Genre et temps de parole au parlement wallon</h2>
-          <h3 class="post-subtitle">Les hommes occupent plus de 80% du temps de parole au parlement wallon. Une plongée visuelle dans cette inégalité.</h3>
+      <article class="pv4 bb b--black-10">
+        <a href="/posts/genre_au_parlement_wallon/" class="no-underline navy">
+          <h2 class="f3">Genre et temps de parole au parlement wallon</h2>
+          <h3 class="f4 normal">Les hommes occupent plus de 80% du temps de parole au parlement wallon. Une plongée visuelle dans cette inégalité.</h3>
         </a>
-        <p class="post-meta">
+        <p class="mt1 gray">
           Publié le 22 novembre 2021
         </p>
       </article>
     </main>
     <!-- Footer-->
-    <footer class="container centered">
-      <p class="centered">
+    <footer class="pa3 tc">
+      <p>
         Contact: robin.devooght[at]mailo.com
       </p>
-      <p>
-        <a href="rss.xml">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-rss-fill" viewBox="0 0 16 16">
-            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 2.5c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1 0-2zm0 4a6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1 0-2zm.5 7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-          </svg>
-        </a>
+      <p class="mt2">
+      <a href="rss.xml" class="link gold ph3 pv2 mb2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 2.5c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1 0-2zm0 4a6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1 0-2zm.5 7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+        </svg>
+      </a>
       </p>
     </footer>
     <!-- Bootstrap core JS-->
