@@ -6,71 +6,66 @@
     <meta name="description" content="Des expériences en data science et data journalism" />
     <meta name="author" content="Robin Devooght" />
     <title>Robin Devooght</title>
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/pico.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
   </head>
   <body>
     
-    <header class="py-5 text-light bg-dark">
-      <div class="container position-relative px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-          <div class="col-md-10 col-lg-8 col-xl-7">
-              <h1 class="display-1">Robin Devooght</h1>
-          </div>
-        </div>
-      </div>
+    <header class="container">
+      <h1>Robin Devooght</h1>
+      <nav>
+        <ul>
+          <li><a href="/index.html" role="button">Blog</a></li>
+          <li><a href="/about.html" role="button" class="outline">A propos</a></li>
+        </ul>
+      </nav>
     </header>
     <!-- Main Content-->
-    <div class="container px-4 px-lg-5">
-      <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-md-10 col-lg-8 col-xl-7">
-          <!-- Post preview-->
-          <div class="post-preview">
-            <a href="/posts/chambre_des_representants_interactif/">
-              <h2 class="post-title">Exploration du temps de parole à la Chambre des représentants</h2>
-              <h3 class="post-subtitle">Outil interactif pour explorer comment se répartit le temps de parole en fonction du genre, des partis, des fonctions, etc.</h3>
-            </a>
-            <p class="post-meta">
-              Publié le 28 mars 2022
-            </p>
-          </div>
-          <div class="post-preview">
-            <a href="/posts/chambre_des_representant-es/">
-              <h2 class="post-title">La Chambre des représentant&middot;es</h2>
-              <h3 class="post-subtitle">15 ans d'évolution du temps de parole des femmes et des hommes à la Chambre des représentants.</h3>
-            </a>
-            <p class="post-meta">
-              Publié le 7 mars 2022
-            </p>
-          </div>
-          <div class="post-preview">
-            <a href="/posts/genre_au_parlement_wallon/">
-              <h2 class="post-title">Genre et temps de parole au parlement wallon</h2>
-              <h3 class="post-subtitle">Les hommes occupent plus de 80% du temps de parole au parlement wallon. Une plongée visuelle dans cette inégalité.</h3>
-            </a>
-            <p class="post-meta">
-              Publié le 22 novembre 2021
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <main class="container">
+      
+      <!-- Post preview-->
+      <article class="post-preview">
+        <a href="/posts/chambre_des_representants_interactif/">
+          <hgroup>
+            <h2 class="post-title">Exploration du temps de parole à la Chambre des représentants</h2>
+            <h3 class="post-subtitle">Outil interactif pour explorer comment se répartit le temps de parole en fonction du genre, des partis, des fonctions, etc.</h3>
+          </hgroup>
+        </a>
+        <p class="post-meta">
+          Publié le 28 mars 2022
+        </p>
+      </article>
+      <article class="post-preview">
+        <a href="/posts/chambre_des_representant-es/">
+          <h2 class="post-title">La Chambre des représentant&middot;es</h2>
+          <h3 class="post-subtitle">15 ans d'évolution du temps de parole des femmes et des hommes à la Chambre des représentants.</h3>
+        </a>
+        <p class="post-meta">
+          Publié le 7 mars 2022
+        </p>
+      </article>
+      <article class="post-preview">
+        <a href="/posts/genre_au_parlement_wallon/">
+          <h2 class="post-title">Genre et temps de parole au parlement wallon</h2>
+          <h3 class="post-subtitle">Les hommes occupent plus de 80% du temps de parole au parlement wallon. Une plongée visuelle dans cette inégalité.</h3>
+        </a>
+        <p class="post-meta">
+          Publié le 22 novembre 2021
+        </p>
+      </article>
+    </main>
     <!-- Footer-->
-    <footer class="border-top">
-      <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-          <div class="col-md-10 col-lg-8 col-xl-7">
-            
-            <div class="small text-center text-muted fst-italic">Contact: robin.devooght[at]mailo.com</div>
-            <div class="small text-center">
-              <a href="rss.xml" class="link-warning">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-rss-fill" viewBox="0 0 16 16">
-                  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 2.5c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1 0-2zm0 4a6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1 0-2zm.5 7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+    <footer class="container centered">
+      <p class="centered">
+        Contact: robin.devooght[at]mailo.com
+      </p>
+      <p>
+        <a href="rss.xml">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-rss-fill" viewBox="0 0 16 16">
+            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 2.5c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1 0-2zm0 4a6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1 0-2zm.5 7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+          </svg>
+        </a>
+      </p>
     </footer>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
