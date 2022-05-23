@@ -7,6 +7,12 @@
       <language>fr</language>
       <docs>https://www.rssboard.org/rss-specification</docs>
       <item>
+         <title>L'inflation, produit par produit</title>
+         <link>https://blog.robindevooght.be/posts/search-inflation/</link>
+         <description>Outil de recherche pour explorer l'évolution des prix de centaines de produits, et pour voir leur poids dans le budget des ménages.</description>
+         <pubDate>Mon, 23 May 2022 00:00:00 GMT</pubDate>
+      </item>
+      <item>
          <title>Exploration du temps de parole à la Chambre des représentants</title>
          <link>https://blog.robindevooght.be/posts/chambre_des_representants_interactif/</link>
          <description>Outil interactif pour explorer comment se répartit le temps de parole en fonction du genre, des partis, des fonctions, etc.</description>
