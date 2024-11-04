@@ -1,0 +1,26 @@
+h1 {
+    --pico-font-size: 3rem;
+}
+
+.narrow {
+    max-width: 700px;
+    /* margin: auto; */
+}
+
+.container {
+    max-width: 950px;
+    /* margin-top: 50px; */
+}
+
+.central_illustration {
+    display: block;
+    /* margin: auto; */
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+footer {
+    background-color: #f8f9fa;
+    margin-top: 50px;
+}

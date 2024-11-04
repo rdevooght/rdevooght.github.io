@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Primary Meta Tags -->
+        <title>
+            How to serve custom maps for free with Leaflet and Cloudflare
+        </title>
+        <meta
+            name="title"
+            content="How to serve custom maps for free with Leaflet and Cloudflare"
+        />
+        <meta
+            name="description"
+            content="How to make an interactive map of all buildings in Belgium when you are too lazy too learn proper tools."
+        />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:url"
+            content="https://blog.robindevooght.be/posts/homemade_tiling/"
+        />
+        <meta
+            property="og:title"
+            content="How to serve custom maps for free with Leaflet and Cloudflare"
+        />
+        <meta
+            property="og:description"
+            content="How to make an interactive map of all buildings in Belgium when you are too lazy too learn proper tools."
+        />
+        <meta
+            property="og:image"
+            content="https://blog.robindevooght.be/posts/homemade_tiling/howitworks.png"
+        />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+            property="twitter:url"
+            content="https://blog.robindevooght.be/posts/homemade_tiling/"
+        />
+        <meta
+            property="twitter:title"
+            content="How to serve custom maps for free with Leaflet and Cloudflare"
+        />
+        <meta
+            property="twitter:description"
+            content="How to make an interactive map of all buildings in Belgium when you are too lazy too learn proper tools."
+        />
+        <meta
+            property="twitter:image"
+            content="https://blog.robindevooght.be/posts/homemade_tiling/howitworks.png"
+        />
+
+        <!-- Meta Tags Generated with https://metatags.io -->
+        <script src="js/highlight.min.js"></script>
+        <script src="js/javascript.min.js"></script>
+        <link rel="stylesheet" href="css/pico.min.css" />
+        <link rel="stylesheet" href="css/obsidian.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <header class="container">
+            <nav>
+                <ul>
+                    <li>
+                        <strong>
+                            <a href="https://blog.robindevooght.be">
+                                Robin Devooght
+                            </a></strong
+                        >
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main class="container">
+            <div class="narrow">
+                <hgroup>
+                    <h1>
+                        How to serve custom maps for free with Leaflet and
+                        Cloudflare
+                    </h1>
+                    <p>
+                        or how to reinvent the wheel because I'm too lazy to
+                        read the docs
+                    </p>
+                </hgroup>
+
+                <h2>
+                    Making maps is hard, but other people have already solved
+                    that problem…
+                </h2>
+
+                <p>
+                    For a recent project, I wanted to create an interactive map
+                    containing information about every building in Belgium. I
+                    had done some simple maps in the past, but this was about 10
+                    GB of geodata so I couldn't use my usual approach of putting
+                    all the data in a js file and making the client load
+                    everything at once: data would have to be fetch and shown on
+                    a need basis, as users would move around the map.
+                </p>
+
+                <p>
+                    I started looking at hosted solutions like ArcGIS or Mapbox
+                    but I was quickly discouraged:
+                </p>
+
+                <ol>
+                    <li>The interfaces are soooo slow…</li>
+                    <li>
+                        My best guess for how much it was going to cost me was:
+                        I lot… maybe 🤷‍♂️ ?
+                    </li>
+                    <li>
+                        The only way I could find out if some features I wanted
+                        were possible was to spend hours trying to make the
+                        whole thing and hope for the best.
+                    </li>
+                </ol>
+
+                <p>
+                    So I thought that I could maybe do it myself. I started to
+                    read about GIS servers, tile servers, vector tiles, etc.
+                    Serving maps is a super common problem, so of course very
+                    smart people have made incredibly powerful tools for every
+                    step you need. There are standards to make everything
+                    interoperable and open source frameworks that make
+                    everything fast and robust. The problem is, it is still a
+                    lot to learn, and I’m very lazy.
+                </p>
+
+                <p>
+                    I kept opening library docs, reading a few lines, realizing
+                    I was out of my depth, giving up, and trying another library
+                    hoping it would be simpler… just to repeat the same loop.
+                </p>
+
+                <p>
+                    That's how I ended up coding a very basic solution to my
+                    problem from scratch. It is much worse than the existing
+                    libraries, it didn't need to exist, and it might have taken
+                    more time than just forcing myself to read the docs. But I
+                    can spin it like a good thing if I convince myself that I
+                    learned more that way, so here we go !
+                </p>
+
+                <h2>… so I can solve it too, just worse</h2>
+
+                <p>
+                    Here's my plan: I know how to load geojson on a map with
+                    <a href="https://leafletjs.com/">Leaflet</a>. I can't do it
+                    with the full 10 GB of data, but if I split the data into 10
+                    000 geojson files, I'll have chunks of ~1Mb with which I can
+                    work. On the client side I'll have some JavaScript to
+                    determine which file is needed, fetch it and add it to the
+                    map.
+                </p>
+
+                <p>
+                    10 000 is 100x100, so I can find the extent of the full map,
+                    divide it in a grid of 100 rows and 100 columns to get 10
+                    000 cells of equal size. Then based on the current viewbox,
+                    I can easily find which cell(s) need to be loaded.
+                </p>
+
+                <p>
+                    All the logic happens on the client side, so I just need to
+                    store 10 000 static geojson somewhere I can fetch them
+                    easily, and for that I'll use a
+                    <a href="https://developers.cloudflare.com/r2/"
+                        >Cloudflare R2 bucket</a
+                    >: my data can just fit inside the free plan, and It will be
+                    able to handle millions of visits per month for free, much
+                    more than what I’ll likely get.
+                </p>
+            </div>
+            <img
+                src="howitworks.png"
+                alt="Diagram showing map tile loading concept"
+                class="central_illustration"
+            />
+            <div class="narrow">
+                <p>
+                    Let's see the basic code to make it work. I removed a lot of
+                    checks and hardcoded some values to make it more readable,
+                    so my actual code is twice as long, but the main logic is
+                    there:
+                </p>
+            </div>
+
+            <pre><code>// Initialise the Leaflet map
+const map = L.map("map", {
+    renderer: L.canvas(), // The canvas renderer is much faster than the default SVG renderer
+}).setView(init_center, init_zoom);
+
+// Create the layer that will hold the data
+const data_layer = L.geoJSON().addTo(map);
+
+// Leaflet provides "moveend" and "zoomend" events that we'll use to update the map when the user moves or zooms
+map.on("moveend", update_map);
+map.on("zoomend", update_map);
+
+/*
+The basic logic is very simple:
+1. Get the current view box of the map
+2. Find the tiles that are visible in the current view
+3. Fetch the visible tiles and add them to the map
+*/
+function update_map() {
+    // map.getBounds() returns the current view box
+    let bounds = map.getBounds();
+
+    // find the tiles that are visible in the current view
+    let tiles = list_visible_tiles(bounds);
+
+    // fetch the visible tiles and add them to the map
+    for (let tile_index of tiles) {
+        // tile_index is an array with the x and y indices of the tile
+        load_tile(tile_index);
+    }
+}
+
+/*
+* This is where the data is fetched from the server and added to the map
+*/
+function load_tile(tile) {
+    let i = tile[0];
+    let j = tile[1];
+
+    // Some code to check if the tile is already loaded, or is being loaded
+    [...]
+
+    // fetch the tile data
+    let url = `https://public_url_of_R2_bucket/tile_${i}_${j}.geojson`;
+
+    fetch(url)
+        .then((response) => {
+            // this should also check if the response is ok
+            return response.json();
+        })
+        .then((data) => {
+            // here we should check if the data is valid, remove some duplicates that appear on the edges,
+            // record that the tile is properly loaded, etc.
+            // But the last step is simply to add the new data to the map
+            data_layer.addData(data);
+        }); // we should also handle errors here
+}</code></pre>
+
+            <div class="narrow">
+                <p>
+                    The function to list the visible tiles is a bit long, so I'm
+                    hiding it here:
+                </p>
+            </div>
+
+            <details>
+                <summary role="button" class="secondary">
+                    <span class="hljs-keyword">function</span>
+                    <span class="hljs-title function_">list_visible_tiles</span
+                    >(<span class="hljs-params">bounds</span>)...
+                </summary>
+                <pre><code>/*
+    bounds is the current view box of the map (the Leaflet LatLngBounds object has _southWest and _northEast properties)
+*/
+function list_visible_tiles(bounds) {
+    let tiles = [];
+
+    // get the min and max indices of the tiles that are visible in the current view
+    let { min_y_tile, max_y_tile, min_x_tile, max_x_tile } =
+        extent_latlng2tiles(bounds);
+
+    // loop between the min and max indices to list all the tiles
+    for (let i = min_x_tile; i <= max_x_tile; i++) {
+        for (let j = min_y_tile; j <= max_y_tile; j++) {
+            tiles.push([i, j]);
+        }
+    }
+
+    return tiles;
+}
+
+function extent_latlng2tiles(bounds) {
+    // We need to know how the grid is divided to calculate which tiles are visible.
+    // As we work with a square grid and tiles of the same size,
+    // we only need to know the extent of the original data and the number of rows/columns.
+    const gridsize = 100; // The number of rows and columns in the grid (we work with a square grid)
+
+    // The full extent of the original data
+    const full_extent = {
+        _northEast: { lat: max_lat, lng: max_lng },
+        _southWest: { lat: min_lat, lng: min_lng }
+    };
+
+    let tile_height = (full_extent._northEast.lat - full_extent._southWest.lat) / gridsize;
+    let tile_width = (full_extent._northEast.lng - full_extent._southWest.lng) / gridsize;
+
+    // The south-west and north-east corners of the view box determine which tiles are visible
+    // We clamp the indices to be between 0 and gridsize - 1 to avoid looking for tiles that don't exist
+    let min_y_tile = Math.min(Math.max(Math.floor((bounds._southWest.lat - full_extent._southWest.lat) / tile_height), 0), gridsize - 1);
+    let max_y_tile = Math.min(Math.max(Math.floor((bounds._northEast.lat - full_extent._southWest.lat) / tile_height), 0), gridsize - 1);
+    let min_x_tile = Math.min(Math.max(Math.floor((bounds._southWest.lng - full_extent._southWest.lng) / tile_width), 0), gridsize - 1);
+    let max_x_tile = Math.min(Math.max(Math.floor((bounds._northEast.lng - full_extent._southWest.lng) / tile_width), 0), gridsize - 1);
+
+    return { min_y_tile, max_y_tile, min_x_tile, max_x_tile };
+}</code></pre>
+            </details>
+            <div class="narrow">
+                <p>And that’s basically the whole logic !</p>
+
+                <h2>Ok but why ?</h2>
+
+                <p>
+                    On the one hand, it is a bit stupid to write this myself
+                    given that well-tested open-source frameworks exist. I ended
+                    up adding quite a lot of code to handle errors and edge
+                    cases, and I’m certain it is still failing in some
+                    situations. But on the other hand I really like having a
+                    simple solution that I completely understand. The whole
+                    thing is just a single HTML page and some vanilla
+                    JavaScript, with Leaflet as the only dependency, and no
+                    server logic at all. I can customize it very easily, it’s
+                    fast, and I can handle a few thousands visits/hour while
+                    staying comfortably inside Cloudflare’s free tier.
+                </p>
+                <p>
+                    Most importantly, it was much more fun than reading the
+                    docs.
+                </p>
+            </div>
+        </main>
+        <footer>
+            <div class="container">
+                <p>Hi I'm Robin 👋</p>
+                <p>
+                    I like working with data and visualising them in interesting
+                    ways.<br />
+                    I usually write in French, you can find some of my work
+                    <a href="https://blog.robindevooght.be">on this blog</a>.
+                </p>
+            </div>
+        </footer>
+        <script>
+            hljs.highlightAll();
+        </script>
+    </body>
+</html>
