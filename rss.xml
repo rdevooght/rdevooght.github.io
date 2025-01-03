@@ -7,6 +7,12 @@
       <language>fr</language>
       <docs>https://www.rssboard.org/rss-specification</docs>
       <item>
+         <title>IA ou pas ?</title>
+         <link>https://blog.robindevooght.be/ia_ou_pas/</link>
+         <description>Savez-vous différencier une texte généré par une IA d'un texte écrit par un humain ?</description>
+         <pubDate>Fri, 3 January 2025 00:00:00 GMT</pubDate>
+      </item>
+      <item>
          <title>How to serve custom maps for free with Leaflet and Cloudflare</title>
          <link>https://blog.robindevooght.be/posts/homemade_tiling/</link>
          <description>How to make an interactive map of all buildings in Belgium when you are too lazy to learn proper tools.</description>
