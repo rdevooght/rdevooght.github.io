@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Records météorologiques</title>
+        <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
+        <script src="data.js"></script>
+        <script src="scripts/color.global.min.js.js"></script>
+        <script src="scripts/month-component.js"></script>
+        <script src="scripts/popup.js"></script>
+        <script src="scripts/script.js"></script>
+        <script src="scripts/date-filter.js"></script>
+        <script src="scripts/geodata.js"></script>
+        <script src="scripts/stations-map.js"></script>
+        <link rel="stylesheet" href="style/reset.css" />
+        <link rel="stylesheet" href="style/style.css" />
+    </head>
+    <body>
+        <div class="text">
+            <h1>70 ans de données météo</h1>
+
+            <p>
+                25 000 pastilles de couleurs pour 70 ans de météo. Plus elles
+                sont rouges, plus la température était élevée par rapport aux
+                autres années à la même date. Plus elles sont bleues, plus la
+                température était basse.
+            </p>
+            <p>
+                Cliquez sur une journée pour voir les données du jour,
+                l’évolution des températures et précipitations pour cette date
+                sur 70 ans, et les potentiels records atteint ce jour-là !
+            </p>
+
+            <details>
+                <summary>En savoir plus sur les données</summary>
+                <h2>Source</h2>
+
+                <p>
+                    Les données viennent du jeu de données “<a
+                        href="https://opendata.meteo.be/geonetwork/srv/eng/catalog.search#/metadata/RMI_DATASET_SYNOP"
+                        >synop</a
+                    >” de l’IRM
+                </p>
+                <p>
+                    Ce jeu de données de 9 millions de lignes contient des
+                    données de températures, précipitation, vent, et bien
+                    d'autres, heure par heure, pour 28 stations météo en
+                    Belgique.
+                </p>
+
+                <p class="warning">
+                    ⚠ Les données brutes fournies par l’IRM sont difficiles à
+                    utiliser et j’ai probablement fait certaines erreurs en les
+                    manipulant. J’ai voulu faire un outil amusant à explorer,
+                    mais je ne garantis pas que ce soit exact !
+                </p>
+
+                <h2>Les stations</h2>
+
+                <p>
+                    Toutes les stations n’ont pas été mises en marche en même
+                    temps: 13 sont actives depuis au moins 1955 (en rouge sur la
+                    carte), les autres sont entrées en activité pour la plupart
+                    au début des années 2000.
+                </p>
+                <div id="stations-map"></div>
+                <p>
+                    Les données de température et précipitations présentées sur
+                    cette page sont en fait les moyennes des températures et
+                    précipitations des 13 stations historiques. Seules ces
+                    stations sont utilisées afin de permettre une meilleure
+                    comparaison sur toute la période.
+                </p>
+                <p>
+                    Cependant, en cliquant sur les jours vous tomberez parfois
+                    sur des “records locaux”. Ces records sont calculés
+                    indépendamment pour chaque station, y compris pour les
+                    nouvelles.
+                </p>
+
+                <h2>Records</h2>
+
+                <p>
+                    Les pastilles entourées d’un cercle noir indiquent que cette
+                    journée détient un record météo.
+                </p>
+                <p>
+                    Ces records sont calculés station par station, en cherchant
+                    pour chaque date (jour+mois) en quelles années ont été
+                    atteint les extrêmes de température et précipitation.
+                </p>
+                <p>
+                    Par exemple, le 11 avril 1960 détient le record de
+                    précipitations pour Spa. C'est-à-dire, si l’on compare les
+                    précipitations du 11 avril de chaque année Spa, c’est en
+                    1960 qu’il a plu le plus.
+                </p>
+                <p>On peut retrouver les records suivants:</p>
+                <ul>
+                    <li><strong>précipitations maximale</strong></li>
+
+                    <li><strong>température maximale</strong></li>
+
+                    <li><strong>température minimale</strong></li>
+
+                    <li>
+                        <strong> température minimale la plus élevée</strong>:
+                        on compare ici les minima de température (atteint en
+                        général pendant la nuit) et on cherche en quelle année
+                        cette température était la plus élevée. Par exemple, le
+                        21 mai 1981 la température à Uccle n’est pas descendue
+                        en dessous de 15,2°C, même la nuit, ce qui en fait une
+                        journée record.
+                    </li>
+
+                    <li>
+                        <strong> température maximale la moins élevée</strong>:
+                        ici c’est l’inverse: on compare les températures
+                        atteinte au moment le plus chaud de la journée, et on
+                        cherche l’année où cette température était la plus
+                        basse.
+                    </li>
+
+                    <li><strong>jours de pluie consécutive</strong></li>
+                    <li><strong>jours sans pluie</strong></li>
+                </ul>
+            </details>
+        </div>
+
+        <div class="text">
+            <div id="date-filter"></div>
+        </div>
+        <div id="calendar-container"></div>
+
+        <!-- Popup Structure -->
+        <record-popup id="record-popup"></record-popup>
+
+        <footer>
+            <div class="text">
+                <p>
+                    Réalisé par
+                    <a href="https://blog.robindevooght.be/">Robin Devooght</a>
+                    <a
+                        aria-label="Flux RSS"
+                        class="ml-2 inline-block text-gray-700 hover:text-orange-400 active:text-orange-400"
+                        href="https://blog.robindevooght.be/rss.xml"
+                        ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="15"
+                            height="15"
+                            fill="currentColor"
+                            viewBox="0 0 16 16"
+                            style="display: inline-block"
+                        >
+                            <path
+                                d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 2.5c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1 0-2zm0 4a6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1 0-2zm.5 7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
+                            /></svg
+                    ></a>
+                </p>
+                <p>
+                    Vous pouvez me contacter à robin.devooght[at]mailo.com, ou
+                    explorer mes autres projets sur
+                    <a
+                        href="https://blog.robindevooght.be/posts/search-inflation/"
+                        >l’inflation</a
+                    >, sur le
+                    <a
+                        href="https://blog.robindevooght.be/posts/chambre_des_representant-es/"
+                        >temps de parole</a
+                    >
+                    au
+                    <a
+                        href="https://blog.robindevooght.be/posts/genre_au_parlement_wallon/"
+                        >parlement wallon</a
+                    >
+                    et à la
+                    <a
+                        href="https://blog.robindevooght.be/posts/chambre_des_representant-es/"
+                        >Chambre</a
+                    >, sur
+                    <a
+                        href="https://blog.robindevooght.be/genre_et_listes_electorales/"
+                        >la place des femmes dans les listes électorales</a
+                    >
+                    ou encore sur
+                    <a href="https://blog.robindevooght.be/ia_ou_pas/">l'IA</a>
+                </p>
+            </div>
+        </footer>
+    </body>
+    <script>
+        setupPopup();
+
+        drawStationsMap(document.querySelector("#stations-map"));
+
+        const afterRenderingCalendars = () => {
+            createFilterForm(
+                document.querySelector("#date-filter"),
+                1955,
+                2024,
+                filterDate,
+            );
+        };
+        generateCalendarRange(
+            1955,
+            2024,
+            "calendar-container",
+            afterRenderingCalendars,
+        );
+    </script>
+</html>
