@@ -7,6 +7,12 @@
       <language>fr</language>
       <docs>https://www.rssboard.org/rss-specification</docs>
       <item>
+         <title>2024 vs 2025</title>
+         <link>https://blog.robindevooght.be/posts/meteo-2024-vs-2025?utm_source=rss</link>
+         <description>2024 était une année exceptionnellement pluvieuse, le début de 2025 était anormalement sec. Un an d’écart, deux extrêmes.</description>
+         <pubDate>Thu, 5 June 2025 00:00:00 GMT</pubDate>
+      </item>
+      <item>
          <title>70 ans de données météo</title>
          <link>https://blog.robindevooght.be/posts/70-ans-meteo?utm_source=rss</link>
          <description>La météo belge des 70 dernières années sur une seule page</description>
