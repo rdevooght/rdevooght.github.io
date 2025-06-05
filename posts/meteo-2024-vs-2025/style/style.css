@@ -54,6 +54,14 @@ footer {
     padding: 0px 10px;
     position: relative;
     margin-bottom: 20px;
+    background-color: #f2af29;
+    border: 1px solid gray;
+    border-radius: 15px;
+}
+
+#map-opener:hover {
+    background-color: #f6c660;
+    box-shadow: 3px 3px 0 #ca9421;
 }
 
 .hint {
