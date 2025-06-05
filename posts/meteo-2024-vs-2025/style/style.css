@@ -1,0 +1,259 @@
+body {
+    padding: 0;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 1em;
+}
+
+h1 span {
+    border: 0;
+    border-bottom: 10px;
+    border-style: solid;
+}
+
+span.year {
+    border: 0;
+    border-bottom: 3px;
+    border-style: solid;
+}
+
+.text {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.text p {
+    margin-bottom: 0.75em;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+footer {
+    background-color: whitesmoke;
+    padding: 10px;
+    margin-top: 10px;
+}
+#dashboard {
+    max-width: 1300px;
+    margin: auto;
+    padding: 10px;
+}
+
+#station-selector h2 {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+#map-opener {
+    cursor: pointer;
+    padding: 0px 10px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.hint {
+    position: absolute;
+    font-style: italic;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: right;
+    right: 50%;
+    width: 300px;
+    color: darkslategray;
+}
+
+.hint img {
+    width: 1.5em;
+    display: inline-block;
+}
+
+#map-popover {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 700px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    max-height: 75vh;
+    overflow-y: auto;
+    border: 1px solid black;
+}
+
+@media (max-width: 640px) {
+    #map-popover {
+        width: 100%;
+        padding: 5px;
+        border-radius: 0;
+        border: 0;
+        padding-top: 2em;
+    }
+}
+
+dialog[open] {
+    animation: fadein 0.1s ease-out forwards;
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+#map-popover::backdrop {
+    background: rgb(0 0 0 / 25%);
+    backdrop-filter: blur(10px);
+}
+
+#map-popover-content {
+    width: 100%;
+    text-align: center;
+}
+
+#map-popover-content p {
+    margin-bottom: 1em;
+}
+
+button {
+    cursor: pointer;
+}
+
+#map-popover-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 0.8em;
+}
+
+#stations-map {
+    width: 100%;
+}
+
+.icon {
+    display: inline-block;
+}
+#plots {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 640px) {
+    #plots {
+        grid-template-columns: 1fr;
+    }
+}
+
+.plot-container {
+    background-color: whitesmoke;
+    /* border-radius: 5px; */
+    border: 1px solid gray;
+    padding: 10px;
+    text-align: center;
+}
+
+.plot-container p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.sun-backdrop {
+    box-shadow: 5px 5px 0 #f2af29;
+}
+
+.rain-backdrop {
+    box-shadow: 5px 5px 0 #048ba8;
+}
+
+.temp-backdrop {
+    box-shadow: 5px 5px 0 #d92632;
+}
+
+#plots .plot {
+    width: 100%;
+}
+
+#big-numbers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    margin-bottom: 5px;
+}
+
+@media (max-width: 640px) {
+    #big-numbers {
+        grid-template-columns: 1fr;
+    }
+}
+
+.big-number {
+    background-color: whitesmoke;
+    /* border-radius: 5px; */
+    border: 1px solid gray;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.big-number .big {
+    font-size: 2.8em;
+}
+
+.big-number .year-compare {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+.big-number .year-compare > div {
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+}
+
+.footnote {
+    font-size: small;
+}
+
+.missing-data {
+    margin-top: 20px;
+    font-style: italic;
+}
+
+.legend {
+    list-style-type: none;
+    text-align: left;
+    padding-left: 0;
+    font-size: small;
+}
+
+.dot {
+    display: inline-block;
+    width: 0.8em;
+    height: 0.8em;
+    border-radius: 0.4em;
+}
+.arrow-container {
+    position: relative;
+}
+.trend-arrow {
+    width: 40%;
+    left: 50%;
+    top: -10px;
+    margin-left: -20%;
+    position: absolute;
+}
