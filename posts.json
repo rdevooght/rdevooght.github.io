@@ -1,0 +1,89 @@
+{
+  "site": {
+    "title": "Robin Devooght",
+    "url": "https://blog.robindevooght.be",
+    "description": "Des expériences en data science et data journalism",
+    "language": "fr",
+    "author": "Robin Devooght",
+    "contact": "robin.devooght[at]mailo.com"
+  },
+  "posts": [
+    {
+      "title": "2024 vs 2025",
+      "url": "/posts/meteo-2024-vs-2025",
+      "description": "2024 était une année exceptionnellement pluvieuse, le début de 2025 était anormalement sec. Un an d'écart, deux extrêmes.",
+      "date": "2025-06-05",
+      "priority": "0.80"
+    },
+    {
+      "title": "70 ans de données météo",
+      "url": "/posts/70-ans-meteo",
+      "description": "La météo belge des 70 dernières années sur une seule page",
+      "date": "2025-05-29",
+      "priority": "0.80"
+    },
+    {
+      "title": "IA: une liste de lecture",
+      "url": "/liste-lecture-ia/",
+      "description": "Une sélection d'articles et de notes sur l'IA",
+      "date": "2025-01-23",
+      "priority": "0.80"
+    },
+    {
+      "title": "IA ou pas ?",
+      "url": "/ia_ou_pas/",
+      "description": "Savez-vous différencier une texte généré par une IA d'un texte écrit par un humain ?",
+      "date": "2025-01-03",
+      "priority": "0.80"
+    },
+    {
+      "title": "How to serve custom maps for free with Leaflet and Cloudflare",
+      "url": "/posts/homemade_tiling/",
+      "description": "How to make an interactive map of all buildings in Belgium when you are too lazy to learn proper tools.",
+      "date": "2024-11-04",
+      "priority": "0.80"
+    },
+    {
+      "title": "Elections: les femmes mises au second plan",
+      "url": "/genre_et_listes_electorales/",
+      "description": "Une analyse des méchanismes par lesquels les partis favorisent les hommes dans la constitution des listes électorales, sur base des élections de 2019.",
+      "date": "2023-06-07",
+      "priority": "0.80"
+    },
+    {
+      "title": "L'inflation, produit par produit",
+      "url": "/posts/search-inflation/",
+      "description": "Outil de recherche pour explorer l'évolution des prix de centaines de produits, et pour voir leur poids dans le budget des ménages.",
+      "date": "2022-05-23",
+      "priority": "0.80"
+    },
+    {
+      "title": "Exploration du temps de parole à la Chambre des représentants",
+      "url": "/posts/chambre_des_representants_interactif/",
+      "description": "Outil interactif pour explorer comment se répartit le temps de parole en fonction du genre, des partis, des fonctions, etc.",
+      "date": "2022-03-28",
+      "priority": "0.80"
+    },
+    {
+      "title": "La Chambre des représentant·es",
+      "url": "/posts/chambre_des_representant-es/",
+      "description": "15 ans d'évolution du temps de parole des femmes et des hommes à la Chambre des représentants.",
+      "date": "2022-03-07",
+      "priority": "0.80"
+    },
+    {
+      "title": "Genre et temps de parole au parlement wallon",
+      "url": "/posts/genre_au_parlement_wallon/",
+      "description": "Les hommes occupent plus de 80% du temps de parole au parlement wallon. Une plongée visuelle dans cette inégalité.",
+      "date": "2021-11-22",
+      "priority": "0.80"
+    }
+  ],
+  "pages": [
+    {
+      "title": "About",
+      "url": "/about.html",
+      "priority": "0.80"
+    }
+  ]
+}
