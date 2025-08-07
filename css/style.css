@@ -1,12 +1,24 @@
 .centered {
-  text-align: center;
+    text-align: center;
 }
 
 * {
-  font-family: -apple-system,"Segoe UI","Roboto","Ubuntu","Cantarell","Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-family:
+        -apple-system, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans",
+        sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
 }
 
-article, header, footer {
-  max-width: 560px;
-  margin: auto;
+header,
+main {
+    max-width: 560px;
+    margin: auto;
+    backdrop-filter: blur(2px);
+}
+
+#canvas {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -1;
 }

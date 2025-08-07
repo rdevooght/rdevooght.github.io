@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -9,6 +9,7 @@
     <link href="css/reset.css" rel="stylesheet" />
     <link href="css/tachyons.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
+    <script src="js/randomWalker.js"></script>
     <script
         defer
         src="https://app-static.sitesights.io/client.min.js?v=1"
@@ -22,7 +23,7 @@
     </script>
   </head>
   <body>
-
+    <canvas id="canvas"></canvas>
     <header class="pa3">
       <h1 class="f1 lh-solid">Robin Devooght</h1>
       <nav>
@@ -141,6 +142,10 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
+  <script>
+  const canvas = document.getElementById('canvas');
+  randomWalker(canvas)
+  </script>
   <!-- Cloudflare Web Analytics -->
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "05b4282391484b1ba19c5fa3458aa5a6"}'></script>
   <!-- End Cloudflare Web Analytics -->

@@ -45,7 +45,7 @@ def generate_index_html(data):
     posts = data["posts"]
 
     html = f'''<!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -55,6 +55,7 @@ def generate_index_html(data):
     <link href="css/reset.css" rel="stylesheet" />
     <link href="css/tachyons.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
+    <script src="js/randomWalker.js"></script>
     <script
         defer
         src="https://app-static.sitesights.io/client.min.js?v=1"
@@ -68,7 +69,7 @@ def generate_index_html(data):
     </script>
   </head>
   <body>
-
+    <canvas id="canvas"></canvas>
     <header class="pa3">
       <h1 class="f1 lh-solid">{site["title"]}</h1>
       <nav>
@@ -114,6 +115,10 @@ def generate_index_html(data):
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
+  <script>
+  const canvas = document.getElementById('canvas');
+  randomWalker(canvas)
+  </script>
   <!-- Cloudflare Web Analytics -->
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "05b4282391484b1ba19c5fa3458aa5a6"}'></script>
   <!-- End Cloudflare Web Analytics -->
