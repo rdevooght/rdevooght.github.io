@@ -1,0 +1,28 @@
+{
+  "name": "rdevooght.github.io",
+  "version": "1.0.0",
+  "description": "En construction.",
+  "main": "index.js",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "clean": "rm -rf _site",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rdevooght/rdevooght.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/rdevooght/rdevooght.github.io/issues"
+  },
+  "homepage": "https://github.com/rdevooght/rdevooght.github.io#readme",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy-plugin-rss": "^2.0.4"
+  }
+}
