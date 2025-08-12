@@ -13,17 +13,7 @@ permalink: "index.html"
     <link href="css/tachyons.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <script src="js/randomWalker.js"></script>
-    <script
-        defer
-        src="https://app-static.sitesights.io/client.min.js?v=1"
-        data-website-uid="_6m5fZ22OkGEghP2myQEDw"
-    ></script>
-    <script defer type="module">
-        MDAL.pageView({
-            Absolute: null,
-            ClientId: null,
-        });
-    </script>
+    {% include 'analytics.njk' %}
   </head>
   <body>
     <canvas id="canvas"></canvas>
@@ -70,7 +60,4 @@ permalink: "index.html"
   const canvas = document.getElementById('canvas');
   randomWalker(canvas)
   </script>
-  <!-- Cloudflare Web Analytics -->
-  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "05b4282391484b1ba19c5fa3458aa5a6"}'></script>
-  <!-- End Cloudflare Web Analytics -->
 </html>

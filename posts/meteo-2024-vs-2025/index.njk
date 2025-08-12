@@ -49,17 +49,7 @@
         <script src="scripts/stations-map.js"></script>
         <link rel="stylesheet" href="style/reset.css" />
         <link rel="stylesheet" href="style/style.css" />
-<script
-    defer
-    src="https://app-static.sitesights.io/client.min.js?v=1"
-    data-website-uid="_6m5fZ22OkGEghP2myQEDw"
-></script>
-<script defer type="module">
-    MDAL.pageView({
-        Absolute: null,
-        ClientId: null,
-    });
-</script>    </head>
+{% include 'analytics.njk'%}    </head>
     <body
         x-data="{stations, station: stations[0], stations_with_sun_measure, currently_hovering: null, map_opened: false, colors}"
     >
@@ -351,7 +341,6 @@
                 </p>
             </div>
         </footer>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "05b4282391484b1ba19c5fa3458aa5a6"}'></script><!-- End Cloudflare Web Analytics -->
     </body>
     <script>
         document.addEventListener("alpine:initialized", () => {

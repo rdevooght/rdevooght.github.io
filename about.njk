@@ -1,5 +1,8 @@
+---
+permalink: "about.html"
+---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -10,6 +13,7 @@
     <link href="css/tachyons.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <script src="js/randomWalker.js"></script>
+    {% include 'analytics.njk' %}
   </head>
   <body>
 
@@ -44,7 +48,4 @@
   const canvas = document.getElementById('canvas');
   randomWalker(canvas)
   </script>
-  <!-- Cloudflare Web Analytics -->
-  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "05b4282391484b1ba19c5fa3458aa5a6"}'></script>
-  <!-- End Cloudflare Web Analytics -->
 </html>

@@ -11,7 +11,6 @@ export default async function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("js");
-  eleventyConfig.addPassthroughCopy("about.html");
   eleventyConfig.addPassthroughCopy("CNAME");
 
   // Add custom filters for date formatting
