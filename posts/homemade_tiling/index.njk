@@ -1,3 +1,11 @@
+---
+title: "How to serve custom maps for free with Leaflet and Cloudflare"
+description: "How to make an interactive map of all buildings in Belgium when you are too lazy to learn proper tools."
+date: "2024-11-04"
+tags:
+  - en
+  - technical
+---
 <!doctype html>
 <html lang="en">
     <head>
@@ -5,15 +13,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <!-- Primary Meta Tags -->
         <title>
-            How to serve custom maps for free with Leaflet and Cloudflare
+            {{ title }}
         </title>
         <meta
             name="title"
-            content="How to serve custom maps for free with Leaflet and Cloudflare"
+            content="{{ title }}"
         />
         <meta
             name="description"
-            content="How to make an interactive map of all buildings in Belgium when you are too lazy to learn proper tools."
+            content="{{ description }}"
         />
 
         <!-- Open Graph / Facebook -->
@@ -24,11 +32,11 @@
         />
         <meta
             property="og:title"
-            content="How to serve custom maps for free with Leaflet and Cloudflare"
+            content="{{ title }}"
         />
         <meta
             property="og:description"
-            content="How to make an interactive map of all buildings in Belgium when you are too lazy to learn proper tools."
+            content="{{ description }}"
         />
         <meta
             property="og:image"
@@ -43,11 +51,11 @@
         />
         <meta
             property="twitter:title"
-            content="How to serve custom maps for free with Leaflet and Cloudflare"
+            content="{{ title }}"
         />
         <meta
             property="twitter:description"
-            content="How to make an interactive map of all buildings in Belgium when you are too lazy to learn proper tools."
+            content="{{ description }}"
         />
         <meta
             property="twitter:image"
