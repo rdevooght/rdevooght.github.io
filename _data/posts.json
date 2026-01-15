@@ -1,5 +1,11 @@
 [
   {
+    "title": "This post is not about AI",
+    "url": "/posts/this-is-not-about-ai",
+    "description": "Generative AI is often a flawed solution to very real problems. Observing current uses of AI may tell us more about our society than about AI itself.",
+    "date": "2026-01-15"
+  },
+  {
     "title": "2024 vs 2025",
     "url": "/posts/meteo-2024-vs-2025",
     "description": "2024 était une année exceptionnellement pluvieuse, le début de 2025 était anormalement sec. Un an d'écart, deux extrêmes.",

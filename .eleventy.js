@@ -1,6 +1,10 @@
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
+import footnote_plugin from "markdown-it-footnote";
 
 export default async function (eleventyConfig) {
+  // Add markdown footnote plugin
+  eleventyConfig.amendLibrary("md", (mdLib) => mdLib.use(footnote_plugin));
+
   // Copy static files
   eleventyConfig.addPassthroughCopy("posts/**/*.css");
   eleventyConfig.addPassthroughCopy("posts/**/*.js");

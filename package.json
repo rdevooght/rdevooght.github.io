@@ -24,6 +24,7 @@
   "homepage": "https://github.com/rdevooght/rdevooght.github.io#readme",
   "dependencies": {
     "@11ty/eleventy": "^3.1.2",
-    "@11ty/eleventy-plugin-rss": "^2.0.4"
+    "@11ty/eleventy-plugin-rss": "^2.0.4",
+    "markdown-it-footnote": "^4.0.0"
   }
 }

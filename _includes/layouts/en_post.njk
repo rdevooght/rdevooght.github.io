@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+language: en
+---
+<header class="container">
+    <nav>
+        <ul>
+            <li>
+                <strong>
+                    <a href="https://blog.robindevooght.be">
+                        Robin Devooght
+                    </a></strong
+                >
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="container">
+    <div class="narrow">
+    {{ content | safe }}
+    </div>
+</main>
+<footer>
+    <div class="container">
+        <p>Hi I'm Robin 👋</p>
+        <p>
+            I like working with data and visualising them in interesting
+            ways.<br />
+            I usually write in French, you can find some of my work
+            <a href="https://blog.robindevooght.be">on this blog</a>.
+        </p>
+    </div>
+</footer>
