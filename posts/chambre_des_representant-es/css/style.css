@@ -1,0 +1,326 @@
+html {
+    font-size: 16px;
+    background-color: #f9fffe;
+    font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+  
+@media (min-width: 768px) {
+    html {
+        font-size: 20px;
+    }
+}
+
+#main-content {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.text {
+    width: 100%;
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+h1 {
+    font-size: 2.25rem;
+    /* font-weight: bold; */
+    margin: 1em 20px 10px;
+    color: #032B3A;
+    hyphens: manual;
+}
+
+p {
+    margin: 10px 20px;
+}
+
+a {
+    color: #3476a2;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin: 1em 10px 10px;
+    color: #032B3A;
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin: 1em 10px 10px;
+    color: #032B3A;
+}
+
+h4 {
+    color: #032B3A;
+    font-size: 1.1rem;
+    font-style: italic;
+    margin: 1em 20px 10px;
+}
+
+.chart {
+    background-color: #F4F4F4;
+    margin-bottom: 1rem;
+}
+
+.chart svg {
+    margin: auto;
+}
+
+.chart .subtitle {
+    font-size: 0.9rem;
+    color: #999;
+    font-style: italic;
+    margin: 10px;
+}
+
+ul.big-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: minmax(100px, auto);
+    gap: 10px;
+    margin: 10px;
+}
+
+ul.big-list li {
+    display: block;
+    border-radius: 5px;
+    background-color: #F4F4F4;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.center {
+    text-align: center;
+}
+
+.c-femme {
+    color: #5a297b;
+}
+
+.c-homme {
+    color: #8f7211;
+}
+
+.femme, .homme {
+    color: whitesmoke;
+    border-radius: 3px;
+    padding: 0 2px;
+}
+
+.femme {
+    background-color: #813bb0;
+}
+
+.homme {
+    background-color: #cda318;
+}
+
+/*
+ footnotes
+*/
+
+/* The actual popup (appears on top) */
+#footnote-popup {
+    width: 300px;
+    background-color: #555;
+    color: #fff;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    margin-left: -150px;
+    /* max-height: 250px; */
+    /* overflow-y: auto; */
+}
+
+@media (min-width: 768px) {
+    #footnote-popup {
+        width: 400px;
+        margin-left: -200px;
+    }
+}
+
+/* Popup arrow */
+#footnote-popup .popup-arrow {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+}
+
+#footnote-popup a {
+    color: #a1eaff;
+}
+
+#footnote-popup ul {
+    list-style: disc;
+}
+
+#footnote-popup li {
+    margin-left: 20px;
+}
+
+a.footnote {
+    width: 0.9rem;
+    height: 0.9rem;
+    line-height: 0.9rem;
+    font-size: 0.7rem;
+    position: relative;
+    top: -0.4rem;
+    margin-left: 1px;
+    text-align: center;
+    z-index: 1;
+    box-sizing: border-box;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    border-radius: 50%;
+    background-color: #4d96c6;
+    vertical-align: middle;
+    text-decoration: none;
+    color: #fff;
+}
+
+/*
+    Toggleable "show more" sections
+*/
+
+.show-more-content {
+    display: none;
+}
+
+.show-more-content.show {
+    display: block;
+}
+
+/*
+ Table
+*/
+
+table {
+    margin: 10px;
+    width: calc(100% - 20px);
+    text-align: center;
+}
+
+th {
+    font-weight: bold;
+}
+
+th .subtitle {
+    font-weight: normal;
+}
+
+th, td {
+    padding: 5px;
+    border-bottom: 1px solid rgb(126, 126, 126);
+}
+
+td.better {
+    color: #5fab81;
+}
+
+td.worse {
+    color: #ef6461;
+}
+
+/* 
+    Colophon
+*/
+
+.colophon {
+    margin-top: 3rem;
+}
+
+.colophon p {
+    font-size: 0.9rem;
+}
+
+.social_media {
+    margin: 1.5rem 20px 0;
+}
+
+.social_media a {
+    color: rgb(63, 63, 63);
+    text-decoration: none;
+}
+
+.social_media a svg {
+    height: 2rem;
+    width: 2rem;
+    margin-right: 5px;
+}
+
+.social_media .bi-rss-fill:hover {
+    color: #f59237;
+}
+
+.social_media .bi-facebook:hover {
+    color: #3b5998;
+}
+
+.social_media .bi-twitter:hover {
+    color: #1da1f2;
+}
+
+.social_media .bi-linkedin:hover {
+    color: #0077b5;
+}
+
+/*
+    language setting
+*/
+
+#language-selector {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+}
+
+#language-selector button {
+    margin: 0;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+}
+
+#language-selector button:first-child {
+    border-radius: 5px 0 0 5px;
+}
+
+#language-selector button:last-child {
+    border-radius: 0 5px 5px 0;
+}
+
+#language-selector button:not(:last-child) {
+    border-right: none;
+}
+
+#language-selector button:hover {
+    background-color: #3476a2;
+    color: #fff;
+}
+
+#language-selector button.active {
+    background-color: #3476a2;
+    color: #fff;
+}

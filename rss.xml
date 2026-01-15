@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xml:base="https://blog.robindevooght.be/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Robin Devooght</title>
+    <link>https://blog.robindevooght.be/</link>
+    <atom:link href="https://blog.robindevooght.be/rss.xml" rel="self" type="application/rss+xml" />
+    <description>Des expériences en data science et data journalism</description>
+    <language>fr</language>
+    <item>
+      <title>2024 vs 2025</title>
+      <link>https://blog.robindevooght.be/posts/meteo-2024-vs-2025?utm_source=rss</link>
+      <description>2024 était une année exceptionnellement pluvieuse, le début de 2025 était anormalement sec. Un an d&#39;écart, deux extrêmes.</description>
+      <pubDate>Thu, 05 Jun 2025 24:00:00 GMT</pubDate>
+      <dc:creator>Robin Devooght</dc:creator>
+      <guid>https://blog.robindevooght.be/posts/meteo-2024-vs-2025?utm_source=rss</guid>
+    </item>
+    <item>
+      <title>70 ans de données météo</title>
+      <link>https://blog.robindevooght.be/posts/70-ans-meteo?utm_source=rss</link>
+      <description>La météo belge des 70 dernières années sur une seule page</description>
+      <pubDate>Thu, 29 May 2025 24:00:00 GMT</pubDate>
+      <dc:creator>Robin Devooght</dc:creator>
+      <guid>https://blog.robindevooght.be/posts/70-ans-meteo?utm_source=rss</guid>
+    </item>
+    <item>
+      <title>IA: une liste de lecture</title>
+      <link>https://blog.robindevooght.be/liste-lecture-ia/?utm_source=rss</link>
+      <description>Une sélection d&#39;articles et de notes sur l&#39;IA</description>
+      <pubDate>Thu, 23 Jan 2025 24:00:00 GMT</pubDate>
+      <dc:creator>Robin Devooght</dc:creator>
+      <guid>https://blog.robindevooght.be/liste-lecture-ia/?utm_source=rss</guid>
+    </item>
+    <item>
+      <title>IA ou pas ?</title>
+      <link>https://blog.robindevooght.be/ia_ou_pas/?utm_source=rss</link>
+      <description>Savez-vous différencier une texte généré par une IA d&#39;un texte écrit par un humain ?</description>
+      <pubDate>Fri, 03 Jan 2025 24:00:00 GMT</pubDate>
+      <dc:creator>Robin Devooght</dc:creator>
+      <guid>https://blog.robindevooght.be/ia_ou_pas/?utm_source=rss</guid>
+    </item>
+    <item>
+      <title>How to serve custom maps for free with Leaflet and Cloudflare</title>
+      <link>https://blog.robindevooght.be/posts/homemade_tiling/?utm_source=rss</link>
+      <description>How to make an interactive map of all buildings in Belgium when you are too lazy to learn proper tools.</description>
+      <pubDate>Mon, 04 Nov 2024 24:00:00 GMT</pubDate>
+      <dc:creator>Robin Devooght</dc:creator>
+      <guid>https://blog.robindevooght.be/posts/homemade_tiling/?utm_source=rss</guid>
+    </item>
+    <item>
+      <title>Elections: les femmes mises au second plan</title>
+      <link>https://blog.robindevooght.be/genre_et_listes_electorales/?utm_source=rss</link>
+      <description>Une analyse des méchanismes par lesquels les partis favorisent les hommes dans la constitution des listes électorales, sur base des élections de 2019.</description>
+      <pubDate>Wed, 07 Jun 2023 24:00:00 GMT</pubDate>
+      <dc:creator>Robin Devooght</dc:creator>
+      <guid>https://blog.robindevooght.be/genre_et_listes_electorales/?utm_source=rss</guid>
+    </item>
+    <item>
+      <title>L&#39;inflation, produit par produit</title>
+      <link>https://blog.robindevooght.be/posts/search-inflation/?utm_source=rss</link>
+      <description>Outil de recherche pour explorer l&#39;évolution des prix de centaines de produits, et pour voir leur poids dans le budget des ménages.</description>
+      <pubDate>Mon, 23 May 2022 24:00:00 GMT</pubDate>
+      <dc:creator>Robin Devooght</dc:creator>
+      <guid>https://blog.robindevooght.be/posts/search-inflation/?utm_source=rss</guid>
+    </item>
+    <item>
+      <title>Exploration du temps de parole à la Chambre des représentants</title>
+      <link>https://blog.robindevooght.be/posts/chambre_des_representants_interactif/?utm_source=rss</link>
+      <description>Outil interactif pour explorer comment se répartit le temps de parole en fonction du genre, des partis, des fonctions, etc.</description>
+      <pubDate>Mon, 28 Mar 2022 24:00:00 GMT</pubDate>
+      <dc:creator>Robin Devooght</dc:creator>
+      <guid>https://blog.robindevooght.be/posts/chambre_des_representants_interactif/?utm_source=rss</guid>
+    </item>
+    <item>
+      <title>La Chambre des représentant·es</title>
+      <link>https://blog.robindevooght.be/posts/chambre_des_representant-es/?utm_source=rss</link>
+      <description>15 ans d&#39;évolution du temps de parole des femmes et des hommes à la Chambre des représentants.</description>
+      <pubDate>Mon, 07 Mar 2022 24:00:00 GMT</pubDate>
+      <dc:creator>Robin Devooght</dc:creator>
+      <guid>https://blog.robindevooght.be/posts/chambre_des_representant-es/?utm_source=rss</guid>
+    </item>
+    <item>
+      <title>Genre et temps de parole au parlement wallon</title>
+      <link>https://blog.robindevooght.be/posts/genre_au_parlement_wallon/?utm_source=rss</link>
+      <description>Les hommes occupent plus de 80% du temps de parole au parlement wallon. Une plongée visuelle dans cette inégalité.</description>
+      <pubDate>Mon, 22 Nov 2021 24:00:00 GMT</pubDate>
+      <dc:creator>Robin Devooght</dc:creator>
+      <guid>https://blog.robindevooght.be/posts/genre_au_parlement_wallon/?utm_source=rss</guid>
+    </item>
+  </channel>
+</rss>

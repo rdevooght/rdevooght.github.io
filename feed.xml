@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="">
+  <title>Blog Title</title>
+  <subtitle>This is a longer description about your blog.</subtitle>
+  <link href="https://example.com/feed.xml" rel="self" />
+  <link href="https://example.com/" />
+  <updated>2025-06-05T00:00:00Z</updated>
+  <id>https://example.com/</id>
+  <author>
+    <name>Your Name</name>
+  </author>
+  <entry>
+    <title>Genre et temps de parole au parlement wallon</title>
+    <link href="https://example.com/posts/genre_au_parlement_wallon/" />
+    <updated>2021-11-22T00:00:00Z</updated>
+    <id>https://example.com/posts/genre_au_parlement_wallon/</id>
+    <content type="html"></content>
+  </entry>
+  <entry>
+    <title>La Chambre des représentant·es</title>
+    <link href="https://example.com/posts/chambre_des_representant-es/" />
+    <updated>2022-03-07T00:00:00Z</updated>
+    <id>https://example.com/posts/chambre_des_representant-es/</id>
+    <content type="html"></content>
+  </entry>
+  <entry>
+    <title>Exploration du temps de parole à la Chambre des représentants</title>
+    <link href="https://example.com/posts/chambre_des_representants_interactif/" />
+    <updated>2022-03-28T00:00:00Z</updated>
+    <id>https://example.com/posts/chambre_des_representants_interactif/</id>
+    <content type="html"></content>
+  </entry>
+  <entry>
+    <title>L&#39;inflation, produit par produit</title>
+    <link href="https://example.com/posts/search-inflation/" />
+    <updated>2022-05-23T00:00:00Z</updated>
+    <id>https://example.com/posts/search-inflation/</id>
+    <content type="html"></content>
+  </entry>
+  <entry>
+    <title>Elections: les femmes mises au second plan</title>
+    <link href="https://example.com/genre_et_listes_electorales/" />
+    <updated>2023-06-07T00:00:00Z</updated>
+    <id>https://example.com/genre_et_listes_electorales/</id>
+    <content type="html"></content>
+  </entry>
+  <entry>
+    <title>How to serve custom maps for free with Leaflet and Cloudflare</title>
+    <link href="https://example.com/posts/homemade_tiling/" />
+    <updated>2024-11-04T00:00:00Z</updated>
+    <id>https://example.com/posts/homemade_tiling/</id>
+    <content type="html"></content>
+  </entry>
+  <entry>
+    <title>IA ou pas ?</title>
+    <link href="https://example.com/ia_ou_pas/" />
+    <updated>2025-01-03T00:00:00Z</updated>
+    <id>https://example.com/ia_ou_pas/</id>
+    <content type="html"></content>
+  </entry>
+  <entry>
+    <title>IA: une liste de lecture</title>
+    <link href="https://example.com/liste-lecture-ia/" />
+    <updated>2025-01-23T00:00:00Z</updated>
+    <id>https://example.com/liste-lecture-ia/</id>
+    <content type="html"></content>
+  </entry>
+  <entry>
+    <title>70 ans de données météo</title>
+    <link href="https://example.com/posts/70-ans-meteo" />
+    <updated>2025-05-29T00:00:00Z</updated>
+    <id>https://example.com/posts/70-ans-meteo</id>
+    <content type="html"></content>
+  </entry>
+  <entry>
+    <title>2024 vs 2025</title>
+    <link href="https://example.com/posts/meteo-2024-vs-2025" />
+    <updated>2025-06-05T00:00:00Z</updated>
+    <id>https://example.com/posts/meteo-2024-vs-2025</id>
+    <content type="html"></content>
+  </entry>
+</feed>
