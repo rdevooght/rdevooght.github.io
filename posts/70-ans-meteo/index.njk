@@ -16,7 +16,7 @@
         <meta property="og:type" content="website" />
         <meta
             property="og:url"
-            content="{{metadata.url}}{{page.url}}"
+            content="{{ metadata.url }}{{ page.url }}"
         />
         <meta property="og:title" content="70 ans de données météo" />
         <meta
@@ -25,7 +25,7 @@
         />
         <meta
             property="og:image"
-            content="{{metadata.url}}{{page.url}}/meta.png"
+            content="{{ metadata.url }}{{ page.url }}/meta.png"
         />
 
         <!-- Twitter -->
@@ -33,7 +33,7 @@
 
         <link
             rel="canonical"
-            href="{{metadata.url}}{{page.url}}"
+            href="{{ metadata.url }}{{ page.url }}"
         />
 
         <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
@@ -177,7 +177,8 @@
                     <a
                         aria-label="Flux RSS"
                         class="ml-2 inline-block text-gray-700 hover:text-orange-400 active:text-orange-400"
-                        href="{{ '/rss.xml' | url }}"                        ><svg
+                        href="{{ '/rss.xml' | url }}"
+                        ><svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="15"
                             height="15"
@@ -194,21 +195,26 @@
                     Vous pouvez me contacter à robin.devooght[at]mailo.com, ou
                     explorer mes autres projets sur
                     <a
-                        href="{{ '/posts/search-inflation/' | url }}"                        >l’inflation</a
+                        href="{{ '/posts/search-inflation/' | url }}"
+                        >l’inflation</a
                     >, sur le
                     <a
-                        href="{{ '/posts/chambre_des_representant-es/' | url }}"                        >temps de parole</a
+                        href="{{ '/posts/chambre_des_representant-es/' | url }}"
+                        >temps de parole</a
                     >
                     au
                     <a
-                        href="{{ '/posts/genre_au_parlement_wallon/' | url }}"                        >parlement wallon</a
+                        href="{{ '/posts/genre_au_parlement_wallon/' | url }}"
+                        >parlement wallon</a
                     >
                     et à la
                     <a
-                        href="{{ '/posts/chambre_des_representant-es/' | url }}"                        >Chambre</a
+                        href="{{ '/posts/chambre_des_representant-es/' | url }}"
+                        >Chambre</a
                     >, sur
                     <a
-                        href="{{ '/genre_et_listes_electorales/' | url }}"                        >la place des femmes dans les listes électorales</a
+                        href="{{ '/genre_et_listes_electorales/' | url }}"
+                        >la place des femmes dans les listes électorales</a
                     >
                     ou encore sur
                     <a href="{{ '/ia_ou_pas/' | url }}">l'IA</a>
