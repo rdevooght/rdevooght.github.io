@@ -4,7 +4,7 @@
   <subtitle>This is a longer description about your blog.</subtitle>
   <link href="https://example.com/feed.xml" rel="self" />
   <link href="https://example.com/" />
-  <updated>2025-06-05T00:00:00Z</updated>
+  <updated>2026-01-15T00:00:00Z</updated>
   <id>https://example.com/</id>
   <author>
     <name>Your Name</name>
@@ -77,6 +77,13 @@
     <link href="https://example.com/posts/meteo-2024-vs-2025" />
     <updated>2025-06-05T00:00:00Z</updated>
     <id>https://example.com/posts/meteo-2024-vs-2025</id>
+    <content type="html"></content>
+  </entry>
+  <entry>
+    <title>This post is not about AI</title>
+    <link href="https://example.com/posts/this-is-not-about-ai" />
+    <updated>2026-01-15T00:00:00Z</updated>
+    <id>https://example.com/posts/this-is-not-about-ai</id>
     <content type="html"></content>
   </entry>
 </feed>
