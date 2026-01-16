@@ -20,7 +20,7 @@
         <meta property="og:type" content="website" />
         <meta
             property="og:url"
-            content="https://blog.robindevooght.be/posts/homemade_tiling/"
+            content="{{ metadata.url }}{{ page.url }}"
         />
         <meta
             property="og:title"
@@ -30,29 +30,12 @@
             property="og:description"
             content="{{ description }}"
         />
+        {% if img_card %}
         <meta
             property="og:image"
-            content="https://blog.robindevooght.be/posts/homemade_tiling/howitworks.png"
+            content="{{ metadata.url }}{{ page.url }}{{ img_card }}"
         />
-
-        <!-- Twitter -->
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta
-            property="twitter:url"
-            content="https://blog.robindevooght.be/posts/homemade_tiling/"
-        />
-        <meta
-            property="twitter:title"
-            content="{{ title }}"
-        />
-        <meta
-            property="twitter:description"
-            content="{{ description }}"
-        />
-        <meta
-            property="twitter:image"
-            content="https://blog.robindevooght.be/posts/homemade_tiling/howitworks.png"
-        />
+        {% endif %}
 
         <link rel="stylesheet" href="{{ '/css/pico/pico.min.css' | url }}" />
         <link rel="stylesheet" href="{{ '/css/pico/style.css' | url }}" />

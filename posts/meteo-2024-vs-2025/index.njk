@@ -16,7 +16,7 @@
         <meta property="og:type" content="website" />
         <meta
             property="og:url"
-            content="https://blog.robindevooght.be/posts/meteo-2024-vs-2025"
+            content="{{ metadata.url }}{{page.url }}"
         />
         <meta property="og:title" content="2024 vs 2025" />
         <meta
@@ -25,7 +25,7 @@
         />
         <meta
             property="og:image"
-            content="https://blog.robindevooght.be/posts/meteo-2024-vs-2025/img/meta.png"
+            content="{{ metadata.url }}{{page.url }}/img/meta.png"
         />
 
         <!-- Twitter -->
@@ -33,7 +33,7 @@
 
         <link
             rel="canonical"
-            href="https://blog.robindevooght.be/posts/meteo-2024-vs-2025"
+            href="{{ metadata.url }}{{page.url }}"
         />
 
         <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
@@ -293,11 +293,11 @@
             <div class="text">
                 <p>
                     Réalisé par
-                    <a href="https://blog.robindevooght.be/">Robin Devooght</a>
+                    <a href="{{ '/' | url }}">Robin Devooght</a>
                     <a
                         aria-label="Flux RSS"
                         class="ml-2 inline-block text-gray-700 hover:text-orange-400 active:text-orange-400"
-                        href="https://blog.robindevooght.be/rss.xml"
+                        href="{{ '/rss.xml' | url }}"
                         ><svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="15"
@@ -315,29 +315,29 @@
                     Vous pouvez me contacter à robin.devooght[at]mailo.com, ou
                     explorer mes autres projets sur
                     <a
-                        href="https://blog.robindevooght.be/posts/search-inflation/"
+                        href="{{ '/posts/search-inflation/' | url }}"
                         >l’inflation</a
                     >, sur le
                     <a
-                        href="https://blog.robindevooght.be/posts/chambre_des_representant-es/"
+                        href="{{ '/posts/chambre_des_representant-es/' | url }}"
                         >temps de parole</a
                     >
                     au
                     <a
-                        href="https://blog.robindevooght.be/posts/genre_au_parlement_wallon/"
+                        href="{{ '/posts/genre_au_parlement_wallon/' | url }}"
                         >parlement wallon</a
                     >
                     et à la
                     <a
-                        href="https://blog.robindevooght.be/posts/chambre_des_representant-es/"
+                        href="{{ '/posts/chambre_des_representant-es/' | url }}"
                         >Chambre</a
                     >, sur
                     <a
-                        href="https://blog.robindevooght.be/genre_et_listes_electorales/"
+                        href="{{ '/genre_et_listes_electorales/' | url }}"
                         >la place des femmes dans les listes électorales</a
                     >
                     ou encore sur
-                    <a href="https://blog.robindevooght.be/ia_ou_pas/">l'IA</a>
+                    <a href="{{ '/ia_ou_pas/' | url }}">l'IA</a>
                 </p>
             </div>
         </footer>

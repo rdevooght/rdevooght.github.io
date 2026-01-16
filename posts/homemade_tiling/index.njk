@@ -29,7 +29,7 @@ tags:
         <meta property="og:type" content="website" />
         <meta
             property="og:url"
-            content="https://blog.robindevooght.be/posts/homemade_tiling/"
+            content="{{ metadata.url }}{{ page.url }}"
         />
         <meta
             property="og:title"
@@ -41,14 +41,14 @@ tags:
         />
         <meta
             property="og:image"
-            content="https://blog.robindevooght.be/posts/homemade_tiling/howitworks.png"
+            content="{{ metadata.url }}{{ page.url }}howitworks.png"
         />
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
         <meta
             property="twitter:url"
-            content="https://blog.robindevooght.be/posts/homemade_tiling/"
+            content="{{ metadata.url }}{{ page.url }}"
         />
         <meta
             property="twitter:title"
@@ -60,7 +60,7 @@ tags:
         />
         <meta
             property="twitter:image"
-            content="https://blog.robindevooght.be/posts/homemade_tiling/howitworks.png"
+            content="{{ metadata.url }}{{ page.url }}howitworks.png"
         />
 
         <!-- Meta Tags Generated with https://metatags.io -->
@@ -348,7 +348,7 @@ function extent_latlng2tiles(bounds) {
                     I like working with data and visualising them in interesting
                     ways.<br />
                     I usually write in French, you can find some of my work
-                    <a href="https://blog.robindevooght.be">on this blog</a>.
+                    <a href="{{ '/' | url }}">on this blog</a>.
                 </p>
             </div>
         </footer>
