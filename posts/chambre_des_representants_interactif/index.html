@@ -1,67 +1,33 @@
 <!doctype html>
 <html lang="fr">
     <head>
-        <meta charset="UTF-8" />
+        <meta charset="UTF-8">
         <!-- Primary Meta Tags -->
         <title>
             Exploration du temps de parole à la Chambre des représentants
         </title>
-        <meta
-            name="title"
-            content="Exploration du temps de parole à la Chambre des représentants"
-        />
-        <meta
-            name="description"
-            content="Outil interactif pour explorer comment se répartit le temps de parole en fonction du genre, des partis, des fonctions, etc."
-        />
+        <meta name="title" content="Exploration du temps de parole à la Chambre des représentants">
+        <meta name="description" content="Outil interactif pour explorer comment se répartit le temps de parole en fonction du genre, des partis, des fonctions, etc.">
 
         <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website" />
-        <meta
-            property="og:url"
-            content="https://www.robindevooght.be/posts/chambre_des_representants_interactif/"
-        />
-        <meta
-            property="og:title"
-            content="Exploration du temps de parole à la Chambre des représentants"
-        />
-        <meta
-            property="og:description"
-            content="Outil interactif pour explorer comment se répartit le temps de parole en fonction du genre, des partis, des fonctions, etc."
-        />
-        <meta
-            property="og:image"
-            content="https://www.robindevooght.be/posts/chambre_des_representants_interactif/img/meta.png"
-        />
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://www.robindevooght.be/posts/chambre_des_representants_interactif/">
+        <meta property="og:title" content="Exploration du temps de parole à la Chambre des représentants">
+        <meta property="og:description" content="Outil interactif pour explorer comment se répartit le temps de parole en fonction du genre, des partis, des fonctions, etc.">
+        <meta property="og:image" content="https://www.robindevooght.be/posts/chambre_des_representants_interactif/img/meta.png">
 
         <!-- Twitter -->
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta
-            property="twitter:url"
-            content="https://www.robindevooght.be/posts/chambre_des_representants_interactif/"
-        />
-        <meta
-            property="twitter:title"
-            content="Exploration du temps de parole à la Chambre des représentants"
-        />
-        <meta
-            property="twitter:description"
-            content="Outil interactif pour explorer comment se répartit le temps de parole en fonction du genre, des partis, des fonctions, etc."
-        />
-        <meta
-            property="twitter:image"
-            content="https://www.robindevooght.be/posts/chambre_des_representants_interactif/img/meta.png"
-        />
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://www.robindevooght.be/posts/chambre_des_representants_interactif/">
+        <meta property="twitter:title" content="Exploration du temps de parole à la Chambre des représentants">
+        <meta property="twitter:description" content="Outil interactif pour explorer comment se répartit le temps de parole en fonction du genre, des partis, des fonctions, etc.">
+        <meta property="twitter:image" content="https://www.robindevooght.be/posts/chambre_des_representants_interactif/img/meta.png">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" type="text/css" href="css/style.min.css" />
-        <script
-    defer
-    src="https://app-static.sitesights.io/client.min.js?v=1"
-    data-website-uid="_6m5fZ22OkGEghP2myQEDw"
-></script>
-<script defer type="module">
+        <link rel="stylesheet" type="text/css" href="css/style.min.css">
+        <script defer="" src="https://app-static.sitesights.io/client.min.js?v=1" data-website-uid="_6m5fZ22OkGEghP2myQEDw"></script>
+<script defer="" type="module">
     MDAL.pageView({
         Absolute: null,
         ClientId: null,
@@ -81,10 +47,7 @@
                 <p>
                     Les comptes rendus des séances de la Chambre des
                     représentants sont
-                    <a
-                        href="https://www.lachambre.be/kvvcr/showpage.cfm?section=/cricra&language=fr&cfm=dcricra.cfm?type=plen&cricra=cri&count=all"
-                        >publiques</a
-                    >. Avec un peu de travail d’analyse de données, il est
+                    <a href="https://www.lachambre.be/kvvcr/showpage.cfm?section=/cricra&language=fr&cfm=dcricra.cfm?type=plen&cricra=cri&count=all">publiques</a>. Avec un peu de travail d’analyse de données, il est
                     possible d’identifier les interventions de chaque individu,
                     et d’estimer les temps de parole en comptant le nombre de
                     mots de chaque intervention.
@@ -93,10 +56,7 @@
                     Cela permet par exemple d’analyser comment le temps de
                     parole se répartit entre femmes et hommes, comme je l’ai
                     fait dans
-                    <a
-                        href="/posts/chambre_des_representant-es/"
-                        >un article précédent</a
-                    >. Mais ces mêmes données permettent de répondre à beaucoup
+                    <a href="/posts/chambre_des_representant-es/">un article précédent</a>. Mais ces mêmes données permettent de répondre à beaucoup
                     d’autres questions: comment se répartit le temps de parole
                     par parti, entre la majorité et l’opposition, entre le
                     gouvernement et les député&middot;es, selon l'identité de
@@ -113,30 +73,17 @@
                     Après avoir exploré, si vous voulez conserver ou partager un
                     graphique en particulier, il suffit de cliquer sur une des
                     icônes suivantes:
-                    <a
-                        class="inline-share share"
-                        href=""
-                        title="Copier le lien pour partager cette vue"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            viewBox="0 0 16 16"
-                        >
-                            <path
-                                d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"
-                            />
-                        </svg> </a
-                    >.<br />
+                    <a class="inline-share share" href="" title="Copier le lien pour partager cette vue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"></path>
+                        </svg> </a>.<br>
                     Cela copiera pour vous un lien vers la vue actuelle.
                 </p>
 
                 <div id="small_screen_warning">
                     <p>
                         Votre écran est trop petit pour utiliser correctement
-                        l'outil d'exploration.<br />
+                        l'outil d'exploration.<br>
                         Si vous en avez l'occasion, visitez ce site depuis un
                         ordinateur.
                     </p>
@@ -144,24 +91,12 @@
             </div>
 
             <div id="explorer">
-                <a
-                    class="share"
-                    href=""
-                    title="Copier le lien pour partager cette vue"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        viewBox="0 0 16 16"
-                    >
-                        <path
-                            d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"
-                        />
+                <a class="share" href="" title="Copier le lien pour partager cette vue">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"></path>
                     </svg>
                 </a>
-                <input type="checkbox" id="toggler" />
+                <input type="checkbox" id="toggler">
                 <aside id="side-selectors">
                     <label for="toggler" class="sidebar-toggle">Filtres</label>
 
@@ -191,17 +126,8 @@
                         <div>
                             <div class="button-selector">
                                 <button id="show-timeline">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="16"
-                                        height="16"
-                                        fill="currentColor"
-                                        viewBox="0 0 16 16"
-                                    >
-                                        <path
-                                            fill-rule="evenodd"
-                                            d="M0 0h1v15h15v1H0V0Zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07Z"
-                                        />
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07Z"></path>
                                     </svg>
                                     Évolution sur 15 ans
                                 </button>
@@ -224,21 +150,9 @@
             </div>
 
             <div id="timeline">
-                <a
-                    class="share"
-                    href=""
-                    title="Copier le lien pour partager ce graphique"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        viewBox="0 0 16 16"
-                    >
-                        <path
-                            d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"
-                        />
+                <a class="share" href="" title="Copier le lien pour partager ce graphique">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"></path>
                     </svg>
                 </a>
                 <div class="close">&#x2715;</div>
@@ -276,29 +190,14 @@
                     Les graphiques et animations sont réalisés à l’aide de la
                     librairie <a href="https://d3js.org/">D3.js</a>. Le code
                     source de cette page ainsi que les données utilisées sont
-                    disponibles sur Github (<a
-                        href="https://github.com/rdevooght/rdevooght.github.io/tree/main/posts/chambre_des_representants_interactif/"
-                        >code</a
-                    >,
-                    <a
-                        href="https://github.com/rdevooght/rdevooght.github.io/tree/main/posts/chambre_des_representant-es/data/"
-                        >données</a
-                    >).
+                    disponibles sur Github (<a href="https://github.com/rdevooght/rdevooght.github.io/tree/main/posts/chambre_des_representants_interactif/">code</a>,
+                    <a href="https://github.com/rdevooght/rdevooght.github.io/tree/main/posts/chambre_des_representant-es/data/">données</a>).
                 </p>
                 <div class="social_media">
 
                     <a href="/rss.xml">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-rss-fill"
-                            viewBox="0 0 16 16"
-                        >
-                            <path
-                                d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 2.5c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1 0-2zm0 4a6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1 0-2zm.5 7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
-                            />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-rss-fill" viewBox="0 0 16 16">
+                            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 2.5c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1 0-2zm0 4a6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1 0-2zm.5 7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"></path>
                         </svg>
                     </a>
                 </div>

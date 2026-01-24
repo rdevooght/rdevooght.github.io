@@ -1,40 +1,25 @@
 <!doctype html>
 <html lang="fr">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Primary Meta Tags -->
         <title>70 ans de données météo</title>
-        <meta name="title" content="70 ans de données météo" />
-        <meta
-            name="description"
-            content="La météo belge des 70 dernières années sur une seule page"
-        />
+        <meta name="title" content="70 ans de données météo">
+        <meta name="description" content="La météo belge des 70 dernières années sur une seule page">
 
         <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website" />
-        <meta
-            property="og:url"
-            content="https://www.robindevooght.be/posts/70-ans-meteo/"
-        />
-        <meta property="og:title" content="70 ans de données météo" />
-        <meta
-            property="og:description"
-            content="La météo belge des 70 dernières années sur une seule page"
-        />
-        <meta
-            property="og:image"
-            content="https://www.robindevooght.be/posts/70-ans-meteo//meta.png"
-        />
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://www.robindevooght.be/posts/70-ans-meteo/">
+        <meta property="og:title" content="70 ans de données météo">
+        <meta property="og:description" content="La météo belge des 70 dernières années sur une seule page">
+        <meta property="og:image" content="https://www.robindevooght.be/posts/70-ans-meteo//meta.png">
 
         <!-- Twitter -->
-        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:card" content="summary_large_image">
 
-        <link
-            rel="canonical"
-            href="https://www.robindevooght.be/posts/70-ans-meteo/"
-        />
+        <link rel="canonical" href="https://www.robindevooght.be/posts/70-ans-meteo/">
 
         <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
         <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
@@ -46,14 +31,10 @@
         <script src="scripts/date-filter.js"></script>
         <script src="scripts/geodata.js"></script>
         <script src="scripts/stations-map.js"></script>
-        <link rel="stylesheet" href="style/reset.css" />
-        <link rel="stylesheet" href="style/style.css" />
-<script
-    defer
-    src="https://app-static.sitesights.io/client.min.js?v=1"
-    data-website-uid="_6m5fZ22OkGEghP2myQEDw"
-></script>
-<script defer type="module">
+        <link rel="stylesheet" href="style/reset.css">
+        <link rel="stylesheet" href="style/style.css">
+<script defer="" src="https://app-static.sitesights.io/client.min.js?v=1" data-website-uid="_6m5fZ22OkGEghP2myQEDw"></script>
+<script defer="" type="module">
     MDAL.pageView({
         Absolute: null,
         ClientId: null,
@@ -82,10 +63,7 @@
                 <h2>Source</h2>
 
                 <p>
-                    Les données viennent du jeu de données “<a
-                        href="https://opendata.meteo.be/geonetwork/srv/eng/catalog.search#/metadata/RMI_DATASET_SYNOP"
-                        >synop</a
-                    >” de l’IRM
+                    Les données viennent du jeu de données “<a href="https://opendata.meteo.be/geonetwork/srv/eng/catalog.search#/metadata/RMI_DATASET_SYNOP">synop</a>” de l’IRM
                 </p>
                 <p>
                     Ce jeu de données de 9 millions de lignes contient des
@@ -186,48 +164,19 @@
                 <p>
                     Réalisé par
                     <a href="/">Robin Devooght</a>
-                    <a
-                        aria-label="Flux RSS"
-                        class="ml-2 inline-block text-gray-700 hover:text-orange-400 active:text-orange-400"
-                        href="/rss.xml"
-                        ><svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="15"
-                            height="15"
-                            fill="currentColor"
-                            viewBox="0 0 16 16"
-                            style="display: inline-block"
-                        >
-                            <path
-                                d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 2.5c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1 0-2zm0 4a6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1 0-2zm.5 7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
-                            /></svg
-                    ></a>
+                    <a aria-label="Flux RSS" class="ml-2 inline-block text-gray-700 hover:text-orange-400 active:text-orange-400" href="/rss.xml"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 16 16" style="display: inline-block">
+                            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 2.5c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1 0-2zm0 4a6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1 0-2zm.5 7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"></path></svg></a>
                 </p>
                 <p>
                     Vous pouvez me contacter à robin.devooght[at]mailo.com, ou
                     explorer mes autres projets sur
-                    <a
-                        href="/posts/search-inflation/"
-                        >l’inflation</a
-                    >, sur le
-                    <a
-                        href="/posts/chambre_des_representant-es/"
-                        >temps de parole</a
-                    >
+                    <a href="/posts/search-inflation/">l’inflation</a>, sur le
+                    <a href="/posts/chambre_des_representant-es/">temps de parole</a>
                     au
-                    <a
-                        href="/posts/genre_au_parlement_wallon/"
-                        >parlement wallon</a
-                    >
+                    <a href="/posts/genre_au_parlement_wallon/">parlement wallon</a>
                     et à la
-                    <a
-                        href="/posts/chambre_des_representant-es/"
-                        >Chambre</a
-                    >, sur
-                    <a
-                        href="/genre_et_listes_electorales/"
-                        >la place des femmes dans les listes électorales</a
-                    >
+                    <a href="/posts/chambre_des_representant-es/">Chambre</a>, sur
+                    <a href="/genre_et_listes_electorales/">la place des femmes dans les listes électorales</a>
                     ou encore sur
                     <a href="/ia_ou_pas/">l'IA</a>
                 </p>

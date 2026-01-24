@@ -2,17 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.robindevooght.be/</loc>
-    <lastmod>2026-01-16T17:40:31Z</lastmod>
+    <lastmod>2026-01-24T07:59:59Z</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
     <loc>https://www.robindevooght.be/about.html</loc>
-    <lastmod>2026-01-16T17:40:31Z</lastmod>
+    <lastmod>2026-01-24T07:59:59Z</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.robindevooght.be/ailleurs/clipedia</loc>
+    <lastmod>2026-01-24T00:00:00Z</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.robindevooght.be/posts/this-is-not-about-ai</loc>
     <lastmod>2026-01-15T00:00:00Z</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.robindevooght.be/ailleurs/3-30-300</loc>
+    <lastmod>2025-09-30T00:00:00Z</lastmod>
     <priority>0.80</priority>
   </url>
   <url>

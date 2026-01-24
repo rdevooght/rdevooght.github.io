@@ -1,71 +1,37 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Primary Meta Tags -->
         <title>
             How to serve custom maps for free with Leaflet and Cloudflare
         </title>
-        <meta
-            name="title"
-            content="How to serve custom maps for free with Leaflet and Cloudflare"
-        />
-        <meta
-            name="description"
-            content="How to make an interactive map of all buildings in Belgium when you are too lazy to learn proper tools."
-        />
+        <meta name="title" content="How to serve custom maps for free with Leaflet and Cloudflare">
+        <meta name="description" content="How to make an interactive map of all buildings in Belgium when you are too lazy to learn proper tools.">
 
         <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website" />
-        <meta
-            property="og:url"
-            content="https://www.robindevooght.be/posts/homemade_tiling/"
-        />
-        <meta
-            property="og:title"
-            content="How to serve custom maps for free with Leaflet and Cloudflare"
-        />
-        <meta
-            property="og:description"
-            content="How to make an interactive map of all buildings in Belgium when you are too lazy to learn proper tools."
-        />
-        <meta
-            property="og:image"
-            content="https://www.robindevooght.be/posts/homemade_tiling/howitworks.png"
-        />
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://www.robindevooght.be/posts/homemade_tiling/">
+        <meta property="og:title" content="How to serve custom maps for free with Leaflet and Cloudflare">
+        <meta property="og:description" content="How to make an interactive map of all buildings in Belgium when you are too lazy to learn proper tools.">
+        <meta property="og:image" content="https://www.robindevooght.be/posts/homemade_tiling/howitworks.png">
 
         <!-- Twitter -->
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta
-            property="twitter:url"
-            content="https://www.robindevooght.be/posts/homemade_tiling/"
-        />
-        <meta
-            property="twitter:title"
-            content="How to serve custom maps for free with Leaflet and Cloudflare"
-        />
-        <meta
-            property="twitter:description"
-            content="How to make an interactive map of all buildings in Belgium when you are too lazy to learn proper tools."
-        />
-        <meta
-            property="twitter:image"
-            content="https://www.robindevooght.be/posts/homemade_tiling/howitworks.png"
-        />
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://www.robindevooght.be/posts/homemade_tiling/">
+        <meta property="twitter:title" content="How to serve custom maps for free with Leaflet and Cloudflare">
+        <meta property="twitter:description" content="How to make an interactive map of all buildings in Belgium when you are too lazy to learn proper tools.">
+        <meta property="twitter:image" content="https://www.robindevooght.be/posts/homemade_tiling/howitworks.png">
 
         <!-- Meta Tags Generated with https://metatags.io -->
         <script src="js/highlight.min.js"></script>
         <script src="js/javascript.min.js"></script>
-        <link rel="stylesheet" href="css/pico.min.css" />
-        <link rel="stylesheet" href="css/obsidian.min.css" />
-        <link rel="stylesheet" href="css/style.css" />
-        <script
-    defer
-    src="https://app-static.sitesights.io/client.min.js?v=1"
-    data-website-uid="_6m5fZ22OkGEghP2myQEDw"
-></script>
-<script defer type="module">
+        <link rel="stylesheet" href="css/pico.min.css">
+        <link rel="stylesheet" href="css/obsidian.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script defer="" src="https://app-static.sitesights.io/client.min.js?v=1" data-website-uid="_6m5fZ22OkGEghP2myQEDw"></script>
+<script defer="" type="module">
     MDAL.pageView({
         Absolute: null,
         ClientId: null,
@@ -82,8 +48,7 @@
                         <strong>
                             <a href="/">
                                 Robin Devooght
-                            </a></strong
-                        >
+                            </a></strong>
                     </li>
                 </ul>
             </nav>
@@ -183,18 +148,12 @@
                     All the logic happens on the client side, so I just need to
                     store 10 000 static geojson somewhere I can fetch them
                     easily, and for that I'll use a
-                    <a href="https://developers.cloudflare.com/r2/"
-                        >Cloudflare R2 bucket</a
-                    >: my data can just fit inside the free plan, and It will be
+                    <a href="https://developers.cloudflare.com/r2/">Cloudflare R2 bucket</a>: my data can just fit inside the free plan, and It will be
                     able to handle millions of visits per month for free, much
                     more than what I’ll likely get.
                 </p>
             </div>
-            <img
-                src="howitworks.png"
-                alt="Diagram showing map tile loading concept"
-                class="central_illustration"
-            />
+            <img src="howitworks.png" alt="Diagram showing map tile loading concept" class="central_illustration">
             <div class="narrow">
                 <p>
                     Let's see the basic code to make it work. I removed a lot of
@@ -272,8 +231,7 @@ function load_tile(tile) {
             <details>
                 <summary role="button" class="secondary">
                     <span class="hljs-keyword">function</span>
-                    <span class="hljs-title function_">list_visible_tiles</span
-                    >(<span class="hljs-params">bounds</span>)...
+                    <span class="hljs-title function_">list_visible_tiles</span>(<span class="hljs-params">bounds</span>)...
                 </summary>
                 <pre><code>/*
     bounds is the current view box of the map (the Leaflet LatLngBounds object has _southWest and _northEast properties)
@@ -349,7 +307,7 @@ function extent_latlng2tiles(bounds) {
                 <p>Hi I'm Robin 👋</p>
                 <p>
                     I like working with data and visualising them in interesting
-                    ways.<br />
+                    ways.<br>
                     I usually write in French, you can find some of my work
                     <a href="/">on this blog</a>.
                 </p>
