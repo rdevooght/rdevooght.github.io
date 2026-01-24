@@ -1,0 +1,21 @@
+---
+layout: layouts/base.njk
+---
+<header class="container">
+    <nav>
+        <ul>
+            <li>
+                <strong>
+                    <a href="{{ '/' | url }}">
+                        Robin Devooght
+                    </a></strong
+                >
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="container">
+    <h1>{{ title }}</h1>
+
+    {{ content | safe }}
+</main>

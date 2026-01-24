@@ -39,9 +39,10 @@
 
         <link rel="stylesheet" href="{{ '/css/pico/pico.min.css' | url }}" />
         <link rel="stylesheet" href="{{ '/css/pico/style.css' | url }}" />
-        {% include 'analytics.njk' %}
     </head>
     <body>
         {{ content | safe }}
     </body>
+    {% getBundle "js" %}
+    {% include 'analytics.njk' %}
 </html>

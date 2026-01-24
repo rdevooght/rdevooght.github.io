@@ -2,6 +2,11 @@ import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import footnote_plugin from "markdown-it-footnote";
 
 export default async function (eleventyConfig) {
+  function addToBundle(scope, bundle, code) {
+    eleventyConfig.getPairedShortcode(bundle).call(scope, code);
+  }
+  eleventyConfig.addBundle("js");
+
   // Add markdown footnote plugin
   eleventyConfig.amendLibrary("md", (mdLib) => mdLib.use(footnote_plugin));
 
@@ -13,6 +18,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("posts/**/*.gif");
   eleventyConfig.addPassthroughCopy("posts/**/*.svg");
 
+  eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("js");
   eleventyConfig.addPassthroughCopy("CNAME");
@@ -50,6 +56,20 @@ export default async function (eleventyConfig) {
     collection: {
       name: "posts",
     },
+  });
+
+  eleventyConfig.addShortcode("youtube", function (id, title = "") {
+    addToBundle(
+      this,
+      "js",
+      `
+        <script type="module" async
+            src="/js/lite-youtube.min.js">
+        </script>
+      `,
+    );
+
+    return `<lite-youtube ${title ? `videotitle="${title}"` : ""} videoid="${id}"></lite-youtube>`;
   });
 
   return {

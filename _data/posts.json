@@ -1,9 +1,21 @@
 [
   {
+    "title": "Clipédia: intro aux stats et proba",
+    "url": "/ailleurs/clipedia",
+    "description": "2 vidéos à destinations des élèves du secondaire, réalisées pour Clipédia",
+    "date": "2026-01-24"
+  },
+  {
     "title": "This post is not about AI",
     "url": "/posts/this-is-not-about-ai",
     "description": "Generative AI is often a flawed solution to very real problems. Observing current uses of AI may tell us more about our society than about AI itself.",
     "date": "2026-01-15"
+  },
+  {
+    "title": "Carte 3-30-300 (The Datalab)",
+    "url": "/ailleurs/3-30-300",
+    "description": "Carte interactive de l'accès à la nature en Belgique selon la règle 3-30-300",
+    "date": "2025-09-30"
   },
   {
     "title": "2024 vs 2025",
