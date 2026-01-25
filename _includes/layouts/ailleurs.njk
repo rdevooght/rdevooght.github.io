@@ -1,6 +1,12 @@
 ---
 layout: layouts/base.njk
 ---
+{% css %}
+@import "/css/carousel.css";
+{% endcss %}
+{% js %}
+<script src="/js/carousel.js"></script>
+{% endjs %}
 <header class="container">
     <nav>
         <ul>
@@ -16,6 +22,35 @@ layout: layouts/base.njk
 </header>
 <main class="container">
     <h1>{{ title }}</h1>
+
+    {% if imageFolder %}
+    {% set images = imageFolder | readDir | filterImages %}
+    {% set carouselId = "carousel-" + range(0, 1000000) | random %}
+    <div class="carousel" id="{{ carouselId }}">
+      {% for img in images %}
+        <input type="radio" name="{{ carouselId }}" id="{{ carouselId }}-{{ loop.index0 }}" {% if loop.first %}checked{% endif %}>
+      {% endfor %}
+
+      <div class="carousel-inner">
+        {% for img in images %}
+          <div class="carousel-slide">
+            <img src="{{ imageFolder | url }}{{ img }}" alt="Slide {{ loop.index }}">
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="carousel-dots">
+        {% for img in images %}
+          <label for="{{ carouselId }}-{{ loop.index0 }}"></label>
+        {% endfor %}
+      </div>
+
+      <div>
+          <button class="carousel-btn prev" onclick="moveSlide('{{ carouselId }}', -1)">❮</button>
+          <button class="carousel-btn next" onclick="moveSlide('{{ carouselId }}', 1)">❯</button>
+      </div>
+    </div>
+    {% endif %}
 
     {{ content | safe }}
 </main>

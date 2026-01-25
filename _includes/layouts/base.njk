@@ -33,12 +33,13 @@
         {% if img_card %}
         <meta
             property="og:image"
-            content="{{ metadata.url }}{{ page.url }}{{ img_card }}"
+            content="{{ metadata.url }}{{ img_card | url }}"
         />
         {% endif %}
 
         <link rel="stylesheet" href="{{ '/css/pico/pico.min.css' | url }}" />
         <link rel="stylesheet" href="{{ '/css/pico/style.css' | url }}" />
+        <style>{% getBundle "css" %}</style>
     </head>
     <body>
         {{ content | safe }}

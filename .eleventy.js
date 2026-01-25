@@ -1,11 +1,23 @@
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import footnote_plugin from "markdown-it-footnote";
+import fs from "fs";
+import path from "path";
 
 export default async function (eleventyConfig) {
   function addToBundle(scope, bundle, code) {
     eleventyConfig.getPairedShortcode(bundle).call(scope, code);
   }
   eleventyConfig.addBundle("js");
+  eleventyConfig.addBundle("css");
+
+  eleventyConfig.addFilter("readDir", function (relative_path) {
+    const fullPath = path.join(process.cwd(), relative_path);
+    return fs.readdirSync(fullPath);
+  });
+
+  eleventyConfig.addFilter("filterImages", function (files) {
+    return files.filter((file) => /\.(jpg|jpeg|png|gif|webp)$/i.test(file));
+  });
 
   // Add markdown footnote plugin
   eleventyConfig.amendLibrary("md", (mdLib) => mdLib.use(footnote_plugin));
