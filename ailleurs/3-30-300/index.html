@@ -16,12 +16,153 @@
         <meta property="og:title" content="Carte 3-30-300 (The Datalab)">
         <meta property="og:description" content="Carte interactive de l&#39;accès à la nature en Belgique selon la règle 3-30-300">
         
+        <meta property="og:image" content="https://www.robindevooght.be/img/3-30-300/zoom2.png">
+        
 
         <link rel="stylesheet" href="/css/pico/pico.min.css">
         <link rel="stylesheet" href="/css/pico/style.css">
+        <style>.carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+.carousel input[type="radio"] {
+    display: none;
+}
+.carousel-slide {
+    min-width: 100%;
+    transition: opacity 0.5s ease-in-out;
+}
+.carousel-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+/* Slide transitions - translate the entire inner container */
+.carousel input[type="radio"]:nth-of-type(1):checked ~ .carousel-inner {
+    transform: translateX(0%);
+}
+.carousel input[type="radio"]:nth-of-type(2):checked ~ .carousel-inner {
+    transform: translateX(-100%);
+}
+.carousel input[type="radio"]:nth-of-type(3):checked ~ .carousel-inner {
+    transform: translateX(-200%);
+}
+.carousel input[type="radio"]:nth-of-type(4):checked ~ .carousel-inner {
+    transform: translateX(-300%);
+}
+.carousel input[type="radio"]:nth-of-type(5):checked ~ .carousel-inner {
+    transform: translateX(-400%);
+}
+.carousel input[type="radio"]:nth-of-type(6):checked ~ .carousel-inner {
+    transform: translateX(-500%);
+}
+.carousel input[type="radio"]:nth-of-type(7):checked ~ .carousel-inner {
+    transform: translateX(-600%);
+}
+.carousel input[type="radio"]:nth-of-type(8):checked ~ .carousel-inner {
+    transform: translateX(-700%);
+}
+.carousel input[type="radio"]:nth-of-type(9):checked ~ .carousel-inner {
+    transform: translateX(-800%);
+}
+.carousel input[type="radio"]:nth-of-type(10):checked ~ .carousel-inner {
+    transform: translateX(-900%);
+}
+/* Dots navigation */
+.carousel-dots {
+    text-align: center;
+    padding: 10px 0;
+}
+.carousel-dots label {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.carousel-dots label:hover {
+    background: #999;
+}
+.carousel
+    input[type="radio"]:nth-of-type(1):checked
+    ~ .carousel-dots
+    label:nth-of-type(1),
+.carousel
+    input[type="radio"]:nth-of-type(2):checked
+    ~ .carousel-dots
+    label:nth-of-type(2),
+.carousel
+    input[type="radio"]:nth-of-type(3):checked
+    ~ .carousel-dots
+    label:nth-of-type(3),
+.carousel
+    input[type="radio"]:nth-of-type(4):checked
+    ~ .carousel-dots
+    label:nth-of-type(4),
+.carousel
+    input[type="radio"]:nth-of-type(5):checked
+    ~ .carousel-dots
+    label:nth-of-type(5),
+.carousel
+    input[type="radio"]:nth-of-type(6):checked
+    ~ .carousel-dots
+    label:nth-of-type(6),
+.carousel
+    input[type="radio"]:nth-of-type(7):checked
+    ~ .carousel-dots
+    label:nth-of-type(7),
+.carousel
+    input[type="radio"]:nth-of-type(8):checked
+    ~ .carousel-dots
+    label:nth-of-type(8),
+.carousel
+    input[type="radio"]:nth-of-type(9):checked
+    ~ .carousel-dots
+    label:nth-of-type(9),
+.carousel
+    input[type="radio"]:nth-of-type(10):checked
+    ~ .carousel-dots
+    label:nth-of-type(10) {
+    background: #333;
+}
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 16px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 10;
+    transition: background 0.3s;
+}
+.carousel-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+.carousel-btn.prev {
+    left: 10px;
+}
+.carousel-btn.next {
+    right: 10px;
+}</style>
     </head>
     <body>
-        <header class="container">
+        
+
+<header class="container">
     <nav>
         <ul>
             <li>
@@ -35,6 +176,59 @@
 </header>
 <main class="container">
     <h1>Carte 3-30-300 (The Datalab)</h1>
+
+    
+    
+    
+    <div class="carousel" id="carousel-464179">
+      
+        <input type="radio" name="carousel-464179" id="carousel-464179-0" checked="">
+      
+        <input type="radio" name="carousel-464179" id="carousel-464179-1">
+      
+        <input type="radio" name="carousel-464179" id="carousel-464179-2">
+      
+        <input type="radio" name="carousel-464179" id="carousel-464179-3">
+      
+
+      <div class="carousel-inner">
+        
+          <div class="carousel-slide">
+            <img src="/img/3-30-300/explorer.png" alt="Slide 1">
+          </div>
+        
+          <div class="carousel-slide">
+            <img src="/img/3-30-300/zoom0.png" alt="Slide 2">
+          </div>
+        
+          <div class="carousel-slide">
+            <img src="/img/3-30-300/zoom1.png" alt="Slide 3">
+          </div>
+        
+          <div class="carousel-slide">
+            <img src="/img/3-30-300/zoom2.png" alt="Slide 4">
+          </div>
+        
+      </div>
+
+      <div class="carousel-dots">
+        
+          <label for="carousel-464179-0"></label>
+        
+          <label for="carousel-464179-1"></label>
+        
+          <label for="carousel-464179-2"></label>
+        
+          <label for="carousel-464179-3"></label>
+        
+      </div>
+
+      <div>
+          <button class="carousel-btn prev" onclick="moveSlide('carousel-464179', -1)">❮</button>
+          <button class="carousel-btn next" onclick="moveSlide('carousel-464179', 1)">❯</button>
+      </div>
+    </div>
+    
 
     <p>La règle 3-30-300, <a href="https://nbsi.eu/the-3-30-300-rule/">proposée par le chercheur Cecil Konijnendijk en 2021</a>,
 suggère des objectifs simples en terme de verdurisation des villes:</p>
@@ -50,12 +244,11 @@ Le résultat est à explorer de deux manières:</p>
 <li>Une <a href="https://thedatalab.be/330300/">carte</a> qui permet de se déplacer et de zoomer librement. En fonction du niveau de zoom on voit les statistiques sur une zone ou les scores pour les chaque batiment. Vous pouvez proposer une correction en cliquant sur un batiment.</li>
 <li>Un <a href="https://thedatalab.be/330300/explorer.html">tableau de bord</a> qui donne une vue précise pour une province ou commune, et permet de comparer les scores 3-30-300 avec d'autres indicateurs (densité de population, richesse, inégalités, ...)</li>
 </ul>
-<p><img src="/img/3-30-300/zoom2.png" alt="Screenshot de la carte 3-30-300"></p>
 
 </main>
 
     </body>
-    
+    <script src="/js/carousel.js"></script>
     <script defer="" src="https://app-static.sitesights.io/client.min.js?v=1" data-website-uid="_6m5fZ22OkGEghP2myQEDw"></script>
 <script defer="" type="module">
     MDAL.pageView({
