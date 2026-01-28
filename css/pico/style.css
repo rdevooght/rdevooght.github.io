@@ -21,8 +21,20 @@ h1 {
 }
 
 footer {
-    background-color: #f8f9fa;
-    margin-top: 50px;
+    background-color: var(--pico-background-color);
+    position: relative;
+}
+
+footer::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 1px;
+    width: 50%;
+    transform: translateX(-50%) translateY(-1px);
+    background-color: #ffffff;
 }
 
 .footnotes {
