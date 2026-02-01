@@ -2,12 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.robindevooght.be/</loc>
-    <lastmod>2026-01-28T17:38:30Z</lastmod>
+    <lastmod>2026-02-01T18:11:00Z</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
     <loc>https://www.robindevooght.be/about.html</loc>
-    <lastmod>2026-01-28T17:38:30Z</lastmod>
+    <lastmod>2026-02-01T18:11:00Z</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.robindevooght.be/series-de-fourier/</loc>
+    <lastmod>2026-02-01T00:00:00Z</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
