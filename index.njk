@@ -28,7 +28,8 @@ permalink: "index.html"
     <!-- Main Content-->
     <main class="pa3">
 {%- for post in collections.posts -%}
-{%- set borderClass = "pv4 bt bb b--black-10" if loop.first else "pv4 bb b--black-10" %}
+    {% if post.show %}
+    {%- set borderClass = "pv4 bt bb b--black-10" if loop.first else "pv4 bb b--black-10" %}
       <article class="{{ borderClass }}">
         <a href="{{ post.url }}" class="no-underline navy link hover-dark-blue">
           <h2 class="f3">{{ post.data.title }}</h2>
@@ -38,6 +39,7 @@ permalink: "index.html"
           Publié le {{ post.date | formatDateFrench }}
         </p>
       </article>
+      {% endif %}
 {%- endfor %}
     </main>
     <!-- Footer-->

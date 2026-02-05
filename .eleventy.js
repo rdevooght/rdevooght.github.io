@@ -61,6 +61,7 @@ export default async function (eleventyConfig) {
       url: post.url,
       data: { title: post.title, description: post.description },
       date: new Date(post.date),
+      show: post.hide ? false : true,
     }));
   });
 
