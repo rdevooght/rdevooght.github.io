@@ -1,5 +1,11 @@
 [
   {
+    "title": "Nettoyer et analyser des données avec un tableur",
+    "url": "/data-quiz/",
+    "description": "Un quiz pour découvrir pas à pas les fonctionnalités de base des tableurs",
+    "date": "2026-03-22"
+  },
+  {
     "title": "Introduction à la data visualisation (IHECS)",
     "url": "/ailleurs/ihecs-datavis",
     "description": "Mes notes pour un cours d'introduction à la data vis pour les étudtiant·es du master en presse et information de l'IHECS",
