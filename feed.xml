@@ -4,7 +4,7 @@
   <subtitle>This is a longer description about your blog.</subtitle>
   <link href="https://example.com/feed.xml" rel="self" />
   <link href="https://example.com/" />
-  <updated>2026-02-01T00:00:00Z</updated>
+  <updated>2026-03-22T00:00:00Z</updated>
   <id>https://example.com/</id>
   <author>
     <name>Your Name</name>
@@ -105,6 +105,20 @@
     <link href="https://example.com/series-de-fourier/" />
     <updated>2026-02-01T00:00:00Z</updated>
     <id>https://example.com/series-de-fourier/</id>
+    <content type="html"></content>
+  </entry>
+  <entry>
+    <title>Introduction à la data visualisation (IHECS)</title>
+    <link href="https://example.com/ailleurs/ihecs-datavis" />
+    <updated>2026-03-22T00:00:00Z</updated>
+    <id>https://example.com/ailleurs/ihecs-datavis</id>
+    <content type="html"></content>
+  </entry>
+  <entry>
+    <title>Nettoyer et analyser des données avec un tableur</title>
+    <link href="https://example.com/data-quiz/" />
+    <updated>2026-03-22T00:00:00Z</updated>
+    <id>https://example.com/data-quiz/</id>
     <content type="html"></content>
   </entry>
 </feed>

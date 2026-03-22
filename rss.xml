@@ -7,6 +7,22 @@
     <description>Des expériences en data science et data journalism</description>
     <language>fr</language>
     <item>
+      <title>Nettoyer et analyser des données avec un tableur</title>
+      <link>https://www.robindevooght.be/data-quiz/?utm_source=rss</link>
+      <description>Un quiz pour découvrir pas à pas les fonctionnalités de base des tableurs</description>
+      <pubDate>Sun, 22 Mar 2026 24:00:00 GMT</pubDate>
+      <dc:creator>Robin Devooght</dc:creator>
+      <guid>https://www.robindevooght.be/data-quiz/?utm_source=rss</guid>
+    </item>
+    <item>
+      <title>Introduction à la data visualisation (IHECS)</title>
+      <link>https://www.robindevooght.be/ailleurs/ihecs-datavis?utm_source=rss</link>
+      <description>Mes notes pour un cours d&#39;introduction à la data vis pour les étudtiant·es du master en presse et information de l&#39;IHECS</description>
+      <pubDate>Sun, 22 Mar 2026 24:00:00 GMT</pubDate>
+      <dc:creator>Robin Devooght</dc:creator>
+      <guid>https://www.robindevooght.be/ailleurs/ihecs-datavis?utm_source=rss</guid>
+    </item>
+    <item>
       <title>Séries de Fourier</title>
       <link>https://www.robindevooght.be/series-de-fourier/?utm_source=rss</link>
       <description>Un outil qui permet de dessiner une fonction quelconque et d&#39;en calculer la série de Fourier</description>
