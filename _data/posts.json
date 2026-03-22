@@ -1,5 +1,11 @@
 [
   {
+    "title": "Introduction à la data visualisation (IHECS)",
+    "url": "/ailleurs/ihecs-datavis",
+    "description": "Mes notes pour un cours d'introduction à la data vis pour les étudtiant·es du master en presse et information de l'IHECS",
+    "date": "2026-03-22"
+  },
+  {
     "title": "Séries de Fourier",
     "url": "/series-de-fourier/",
     "description": "Un outil qui permet de dessiner une fonction quelconque et d'en calculer la série de Fourier",
